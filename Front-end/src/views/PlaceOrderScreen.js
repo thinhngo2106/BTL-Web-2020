@@ -24,7 +24,7 @@ export default function PlaceOrderScreen(props) {
   cart.itemsPrice = toPrice(
     cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0)
   );
-  cart.shippingPrice = cart.itemsPrice > 100 ? 200000 : toPrice(0);
+  cart.shippingPrice = cart.itemsPrice > 100 ? 20000 : toPrice(0);
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice;
   const today = new Date();
   cart.orderDate =
@@ -53,6 +53,9 @@ export default function PlaceOrderScreen(props) {
       dispatch({ type: ORDER_CREATE_RESET });
     }
   }, [dispatch, order, success]);
+  function converToPrice(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
@@ -104,7 +107,7 @@ export default function PlaceOrderScreen(props) {
                       </div>
 
                       <div>
-                        {item.qty} x ${item.price} = ${item.qty * item.price}
+                        {item.qty} x ${converToPrice(item.price)} = ${converToPrice(item.qty * item.price)}
                       </div>
                     </div>
                   </div>
@@ -128,24 +131,19 @@ export default function PlaceOrderScreen(props) {
               <li> */}
               <div className="col-md-8">
                 <div className="row">
-                  <div>Items</div>
-                  <div>${cart.itemsPrice}</div>
+                  <div><p>Tiền hàng: {converToPrice(cart.itemsPrice)}₫</p></div>
                 </div>
                 {/* </li>
               <li> */}
                 <div className="row">
-                  <div>Shipping</div>
-                  <div> {cart.shippingPrice}</div>
+                  <div><p>Phí vận chuyển: {converToPrice(cart.shippingPrice)}₫ </p></div>
                 </div>
                 {/* </li>
 
               <li> */}
                 <div className="row">
                   <div>
-                    <strong> Order Total</strong>
-                  </div>
-                  <div>
-                    <strong>${cart.totalPrice}</strong>
+                    <strong>Tổng tiền hàng: {converToPrice(cart.totalPrice)}₫</strong>
                   </div>
                   {/* </li>
               <li> */}

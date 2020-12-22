@@ -18,7 +18,10 @@ export const searchKeywordReducer =  (
         case SEARCH_KEYWORD_REQUEST:
             return {loading: true};
         case SEARCH_KEYWORD_SUCCESS: 
-            return {loading: false, products: action.payload};
+            return {loading: false, 
+                products: action.payload.products,
+                pages: action.payload.totalPages,
+            };
         case SEARCH_KEYWORD_FAIL:
             return {loading: false, error: action.payload};
         default:

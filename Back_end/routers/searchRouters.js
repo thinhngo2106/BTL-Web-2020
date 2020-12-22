@@ -9,6 +9,9 @@ const Op = Sequelize.Op;
 
 router.get('/', expressAsyncHandler(async( req,res) => {
     const term = req.query.query + "*";
+    const limit =  5;
+    const page = req.query.page >= 0 ? req.query.page : 0;
+    const offset = page ? parseInt(page * limit) : 0;
     const products = await db.products.findAll({
         include:[{
             model: db.productdetail
@@ -18,10 +21,23 @@ router.get('/', expressAsyncHandler(async( req,res) => {
         ,
         replacements: {
             name: term
-        }
-    })
+        },
+        offset: offset,
+        limit: limit,
+    });
+    const pages = await db.products.count({
+        where:
+        Sequelize.literal('MATCH (productName) AGAINST (:name IN BOOLEAN MODE) ')
+        ,
+        replacements: {
+            name: term
+        },
+        attributes: []
+    });
+    const totalPages = Math.ceil(pages/ limit);
+
     if (products.length > 0) {
-            res.send(products)
+            res.send({products, totalPages})
     }
     else {  
         res.status(404).send({message: 'Không tìm thấy sản phẩm', term})
@@ -44,7 +60,7 @@ router.get('/categories',
     const limitProduct = req.query.limit
     const limit =  parseInt(limitProduct); 
     const offset = page ? parseInt(page * limit) : 0;
- 
+
     const priceFilter = minPrice && maxPrice ? [minPrice,maxPrice] : [1,50000000];
     const data = await db.categories.findAll({
         where:{

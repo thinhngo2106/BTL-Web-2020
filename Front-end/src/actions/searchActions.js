@@ -11,14 +11,15 @@ import {
 } from "../constants/searchConstants";
 import Axios from "axios";
 
-export const searchKeyword = (queryKey) => async (dispatch) => {
+export const searchKeyword = (queryKey, pageNumber) => async (dispatch) => {
 
   dispatch({
     type: SEARCH_KEYWORD_REQUEST, payload: queryKey,
   });
   try {      
     const { data } = await Axios.get('/api/search/', {params:{
-      query: queryKey
+      query: queryKey,
+      page: pageNumber ? pageNumber : 0,
     }});
     dispatch({ type: SEARCH_KEYWORD_SUCCESS, payload: data });
   } catch (error) {
