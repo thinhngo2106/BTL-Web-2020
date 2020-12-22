@@ -126,9 +126,9 @@ const data = {
             image: "..//../image/Product/Vans/vans1.jpg",
         },
         {
-        idProduct: 5,
-        idImage: 2,
-        image: "..//../image/Product/Vans/vn0a38f7phn-3.jpg",
+            idProduct: 5,
+            idImage: 2,
+            image: "..//../image/Product/Vans/vn0a38f7phn-3.jpg",
         },
         {
             idProduct: 6,
