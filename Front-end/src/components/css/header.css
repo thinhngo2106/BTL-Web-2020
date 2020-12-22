@@ -57,6 +57,7 @@
 }
 
 .header__nav {
+  padding-left: 10%;
   display: flex;
   justify-content: space-evenly;
   margin-left: 20px;
@@ -95,52 +96,49 @@
   
 }
 
-/* .dropdown{
+.dropdown{
   display: inline-block;
   position: relative;
 }
+
 .dropdown-content {
   font-size: 15px;
-  position: absolute;
-  display: none;
-  right: 0;
-  min-width: 8rem;
-  padding: 0px;
-  z-index: 1;
-  background-color:#cd9042;
-  margin: 0;
-  margin-top: 0.4rem;
-  border-radius: 0.5rem;
-  color: rgb(0, 88, 0); */
+  color: rgb(0, 88, 0); 
+}
 
 .dropdown-basic {
   display: inline-block;
   position: relative;
   background-color: rgba(244,203,36,09);
-  border: none;
+  border: rgba(244,203,36,09);
 }
 
-/* .dropdown-basic:hover {
+.dropdown-basic:hover {
   background-color: rgba(244,203,36,09);
+}
+
+/* .dropdown-basic:focus {
+  outline: white;
 } */
-.dropdown-basic:default {
-  background-color: rgba(244,203,36,09);
-}
-.dropdown-basic:focus {
-  outline: none;
-}
 
 .dropdown-signout{
   font-size: 18px;
   background-color:#fff;
   text-align: center;
 }
-.dropdown-signout:active {
+.dropdown-signout:focus {
   background-color:#fff;
-
 }
-.dropdown-content {
-  color: rgb(0, 88, 0);
+
+.signout-button {
+  border: none;
+  text-decoration: none;
+  background-color: #fff;
+}
+
+.signout-button:focus {
+  background-color: #fff;
+  outline: none;
 }
 /* @media only screen 
   and (min-device-width: 320px) 
