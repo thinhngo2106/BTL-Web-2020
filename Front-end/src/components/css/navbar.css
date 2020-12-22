@@ -45,7 +45,7 @@ li {
     text-decoration: none;
 } */
 
-#navbar-button {
+.navbar-button {
     cursor: pointer;
     font-size: 17px;
     font-weight: bold;
@@ -55,9 +55,9 @@ li {
     color: rgb(236, 236, 236);
     
 }
-#navbar-button:hover {
+.navbar-button:hover {
     color: rgb(10, 10, 10)
 }
-#navbar-button:focus {
+.navbar-button:focus {
     outline: none;
 }
