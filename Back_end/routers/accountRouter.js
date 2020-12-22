@@ -62,11 +62,14 @@ router.get(
 
 
 router.delete(
-    '/:id',
+    '/delete',
     isAuth,
     isAdmin,
     expressAsyncHandler(async (req, res) => {
-      const user = await User.findById(req.params.id);
+      const userId = req.query.idUser;
+      const user = await db.users.findOne({
+        where:{
+          idUser: userId}});
       if (user) {
         if (user.isAdmin) {
           res.status(400).send({ message: 'Can Not Delete Admin User' });

@@ -33,6 +33,9 @@ export default function HomeScreen() {
                 <div className="home__container">
                     <img className="home__image" 
                     src = "..//../image/background2.jpg" alt ="" />
+                    <div className="titleCategory">
+                    <span className="nav">Sản phẩm yêu thích</span>
+                    </div>
                     <div className="home__row">
                         {products.map((product) => (
                             <Product key={product.idProduct} product={product}> </Product>
@@ -47,7 +50,7 @@ export default function HomeScreen() {
                         <div>
                             {data.map((data) => ( 
                             <div  key={data.idCategory}>  
-                            <div key={data.idCategory}> 
+                            <div key={data.idCategory} className="titleCategory"> 
                                 <span className="nav">{data.categoryName}</span>
                             </div>
                             <div className="home__row" >

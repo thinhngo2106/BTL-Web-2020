@@ -30,19 +30,28 @@ module.exports.productdetail = expressAsyncHandler(async( req,res) => {
 });
 
 module.exports.products =  expressAsyncHandler(async(req,res)=>{
+    const limit =  10;
+    const page = req.query.page >= 0 ? req.query.page : 0;
+    const offset = page ? parseInt(page * limit) : 0;
     const products = await db.products.findAll({
         include: [
             {
                 model: db.productdetail,
+                offset: 0,
+                limit: 1,
             },{
                 model: db.brands,
             },
             {
                 model: db.categories,
             }
-        ]
+        ],
+        offset: offset,
+        limit: limit,
     })
-    res.send(products);
+    const pages = await db.products.count();
+    const totalPages = Math.ceil(pages/ limit);
+    res.send({products, totalPages});
 });
 
 module.exports.postProducts =  expressAsyncHandler(async (req, res) => {

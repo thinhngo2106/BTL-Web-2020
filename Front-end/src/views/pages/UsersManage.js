@@ -4,6 +4,7 @@ import { deleteUser, listUsers } from '../../actions/userActions';
 import LoadingBox from '../../components/LoadingBox';
 import MessageBox from '../../components/MessageBox';
 import '../css/userManage.css'
+import {USER_DELETE_RESET } from '../../constants/userConstants';
 
 function UsersManage(props) {
   const userList = useSelector((state) => state.userList);
@@ -18,10 +19,13 @@ function UsersManage(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(listUsers());
+    dispatch({
+      type: USER_DELETE_RESET,
+    });
   }, [dispatch, successDelete]);
   const deleteHandler = (user) => {
     if (window.confirm('Are you sure?')) {
-      dispatch(deleteUser(user._id));
+      dispatch(deleteUser(user.idUser));
     }
   };
   return (
@@ -37,6 +41,7 @@ function UsersManage(props) {
     ) : error ? (
       <MessageBox variant="danger">{error}</MessageBox>
     ) : (
+      <div className="table-content">
       <table className="table">
         <thead>
           <tr>
@@ -59,7 +64,7 @@ function UsersManage(props) {
                 <button
                   type="button"
                   className="small"
-                  onClick={() => props.history.push(`/user/${user._id}/edit`)}
+                  onClick={() => props.history.push(`/user/${user.idUser}/edit`)}
                 >
                   Edit
                 </button>
@@ -75,6 +80,7 @@ function UsersManage(props) {
           ))}
         </tbody>
       </table>
+      </div>
     )}
   </div>
   );

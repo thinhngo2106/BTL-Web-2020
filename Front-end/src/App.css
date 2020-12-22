@@ -87,6 +87,9 @@ ul {
   margin-bottom: 10px;
 }
 
+.table-content{
+  display: flex;
+}
 
 @media screen and (max-width: 1000px){
   .checkout-steps{

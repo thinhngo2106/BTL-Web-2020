@@ -59,10 +59,150 @@ router.post("/",
             idProduct: createdProduct.idProduct,
             image: req.body.image,
         })
+        const array = req.body.sizeQuantity;
+        array.forEach(async(element) => {
+            await db.productsizes.create({
+                idProduct: createdProduct.idProduct,
+                idSize: element.idSize,
+                quantityInStock: element.quantityInStock,
+                productSize: element.productSize,
+        })
+     })
         res.send({ message: 'Product Created', product: createdProduct });
     }
 ));
+router.post("/category",
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const createdCategory = await db.categories.create({
+            categoryName: req.body.nameCategory,
+        });
+        res.send({ message: 'Category create', category: createdCategory });
+    }
+));
+router.delete(
+    '/category/:id',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const category = await db.categories.findOne({
+            where:{
+                idCategory: req.params.id
+            }
+        })
+        if (category) {
+        const deleteCategory = await category.destroy();
+        res.send({ message: 'Category Deleted', category: deleteCategory });
+        } else {
+        res.status(404).send({ message: 'Category Not Found' });
+        }
+  })
+);
 
+router.put(
+    '/category/:id',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const category = await db.categories.findOne({
+            where:{
+                idCategory: req.params.id
+            }
+        })
+        if (category) {
+            category.categoryName = req.body.name;
+            updateCategory = category.save();
+            res.send({ message: 'Category Update', category: updateCategory});
+        } else {
+        res.status(404).send({ message: 'Category Not Found' });
+        }
+  })
+);
+
+router.get(
+    '/category/:id',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const category = await db.categories.findOne({
+            where:{
+                idCategory: req.params.id
+            }
+        })
+        if (category) {
+            res.send(category);
+        } else {
+        res.status(404).send({ message: 'Category Not Found' });
+        }
+  })
+);
+
+
+router.post("/brand",
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const createdBrand = await db.brands.create({
+            brandName: req.body.nameBrand,
+        });
+        res.send({ message: 'Brand create', category: createdBrand });
+    }
+));
+router.delete(
+    '/brand/:id',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const brand = await db.brands.findOne({
+            where:{
+                idBrand: req.params.id
+            }
+        })
+        if (brand) {
+        const deleteBrand = await brand.destroy();
+        res.send({ message: 'Brand Deleted', brand: deleteBrand });
+        } else {
+        res.status(404).send({ message: 'Brand Not Found' });
+        }
+  })
+);
+router.get(
+    '/brand/:id',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const brand = await db.brands.findOne({
+            where:{
+                idBrand: req.params.id
+            }
+        })
+        if (brand) {
+            res.send(brand);
+        } else {
+            res.status(404).send({ message: 'Brand Not Found' });
+        }
+  })
+);
+router.put(
+    '/brand/:id',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const brand = await db.brands.findOne({
+            where:{
+                idBrand: req.params.id
+            }
+        })
+        if (brand) {
+            brand.brandName = req.body.name;
+            updateBrand = brand.save();
+            res.send({ message: 'Brand Update', brand: updateBrand });
+        } else {
+            res.status(404).send({ message: 'Brand Not Found' });
+        }
+  })
+);
 
 router.put(
     '/:id',

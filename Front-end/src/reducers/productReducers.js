@@ -23,6 +23,36 @@ const {
     PRODUCT_BRAND_LIST_REQUEST,
     PRODUCT_BRAND_LIST_SUCCESS,
     PRODUCT_BRAND_LIST_FAIL,
+    CREATE_CATEGORY_REQUEST,
+    CREATE_CATEGORY_SUCCESS,
+    CREATE_CATEGORY_FAIL,
+    CREATE_CATEGORY_RESET,
+    CREATE_BRAND_REQUEST,
+    CREATE_BRAND_SUCCESS,
+    CREATE_BRAND_FAIL,
+    CREATE_BRAND_RESET,
+    DELETE_BRAND_REQUEST,
+    DELETE_BRAND_SUCCESS,
+    DELETE_BRAND_FAIL,
+    DELETE_BRAND_RESET,
+    DELETE_CATEGORY_REQUEST,
+    DELETE_CATEGORY_SUCCESS,
+    DELETE_CATEGORY_FAIL,
+    DELETE_CATEGORY_RESET,
+    CATEGORY_UPDATE_REQUEST,
+    CATEGORY_UPDATE_SUCCESS,
+    CATEGORY_UPDATE_FAIL,
+    CATEGORY_UPDATE_RESET,
+    BRAND_UPDATE_REQUEST,
+    BRAND_UPDATE_SUCCESS,
+    BRAND_UPDATE_FAIL,
+    BRAND_UPDATE_RESET,
+    CATEGORY_DETAILS_REQUEST,
+    CATEGORY_DETAILS_SUCCESS,
+    CATEGORY_DETAILS_FAIL,
+    BRAND_DETAILS_REQUEST,
+    BRAND_DETAILS_SUCCESS,
+    BRAND_DETAILS_FAIL,
 
   } = require('../constants/productConstants');
 
@@ -34,7 +64,8 @@ export const productListReducer =  (
         case PRODUCT_LIST_REQUEST:
             return {loading: true};
         case PRODUCT_LIST_SUCCESS: 
-            return {loading: false, products: action.payload};
+            return {loading: false, products: action.payload.products,
+            pages: action.payload.totalPages};
         case PRODUCT_LIST_FAIL:
             return {loading: false, error: action.payload};
         default:
@@ -53,7 +84,7 @@ export const productDetailsReducer = (state = { loading: true }, action) => {
       default:
         return state;
     }
-  };
+};
 
 export const productCategoryListReducer = (
     state = { loading: true, categories: [] },
@@ -127,6 +158,123 @@ export const productUpdateReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case PRODUCT_UPDATE_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const categoryCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case CREATE_CATEGORY_REQUEST:
+      return { loading: true };
+    case CREATE_CATEGORY_SUCCESS:
+      return { loading: false, success: true, category: action.payload };
+    case CREATE_CATEGORY_FAIL:
+      return { loading: false, error: action.payload };
+    case CREATE_CATEGORY_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const categoryDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case DELETE_CATEGORY_REQUEST:
+      return { loading: true };
+    case DELETE_CATEGORY_SUCCESS:
+      return { loading: false, success: true };
+    case DELETE_CATEGORY_FAIL:
+      return { loading: false, error: action.payload };
+    case DELETE_CATEGORY_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const categoryUpdateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case CATEGORY_UPDATE_REQUEST:
+      return { loading: true };
+    case CATEGORY_UPDATE_SUCCESS:
+      return { loading: false, success: true };
+    case CATEGORY_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+    case CATEGORY_UPDATE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const categoryDetailsReducer = (state = { loading: true }, action) => {
+  switch (action.type) {
+    case CATEGORY_DETAILS_REQUEST:
+      return { loading: true };
+    case CATEGORY_DETAILS_SUCCESS:
+      return { loading: false, category: action.payload };
+    case CATEGORY_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+
+export const brandCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case CREATE_BRAND_REQUEST:
+      return { loading: true };
+    case CREATE_BRAND_SUCCESS:
+      return { loading: false, success: true, brand: action.payload };
+    case CREATE_BRAND_FAIL:
+      return { loading: false, error: action.payload };
+    case CREATE_BRAND_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const brandDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case DELETE_BRAND_REQUEST:
+      return { loading: true };
+    case DELETE_BRAND_SUCCESS:
+      return { loading: false, success: true };
+    case DELETE_BRAND_FAIL:
+      return { loading: false, error: action.payload };
+    case DELETE_BRAND_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const brandUpdateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case BRAND_UPDATE_REQUEST:
+      return { loading: true };
+    case BRAND_UPDATE_SUCCESS:
+      return { loading: false, success: true };
+    case BRAND_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+    case BRAND_UPDATE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const brandDetailsReducer = (state = { loading: true }, action) => {
+  switch (action.type) {
+    case BRAND_DETAILS_REQUEST:
+      return { loading: true };
+    case BRAND_DETAILS_SUCCESS:
+      return { loading: false, brand: action.payload };
+    case BRAND_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }

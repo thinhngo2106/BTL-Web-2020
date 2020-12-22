@@ -24,8 +24,8 @@ import {OrdersManage} from "./views/pages/Orders";
 import { Products, ProductsManage, AddProducts } from "./views/pages/Products";
 import AdminSidebar from "./components/Admin_Sidebar";
 import Users from "./views/pages/UsersManage";
-import {ProductsType, ProductsTypeManage, AddProductsType} from "./views/pages/ProductsType";
-import {Brands, BrandsManage, AddBrands} from "./views/pages/Brands";
+import {ProductsTypeManage, AddProductsType,  EditCategoryScreen} from "./views/pages/ProductsType";
+import {BrandsManage, AddBrands, EditBrandScreen} from "./views/pages/Brands";
 import ProductEditScreen from './views/pages/EditProductScreen';
 import OrderScreen from "./views/OrderScreen";
 
@@ -60,12 +60,12 @@ function App() {
                     <AdminRoute path="/products/addProducts" exact component={AddProducts}></AdminRoute>
                     <AdminRoute path="/:id/edit" component={ProductEditScreen}></AdminRoute>
                     <AdminRoute path="/usersManage" exact component={Users}></AdminRoute>
-                    <AdminRoute path="/productsType" exact component={ProductsType}></AdminRoute>
                     <AdminRoute path="/productsType/productsTypeManage" exact component={ProductsTypeManage}></AdminRoute>
                     <AdminRoute path="/productsType/addProductsType" exact component={AddProductsType}></AdminRoute>
-                    <AdminRoute path="/brandsManage" exact component={Brands}></AdminRoute>
+                    <AdminRoute path="/productsType/:id/edit" exact component={EditCategoryScreen}></AdminRoute>\
                     <AdminRoute path="/brands/brandsManage" exact component={BrandsManage}></AdminRoute>
                     <AdminRoute path="/brands/addBrands" exact component={AddBrands}></AdminRoute>
+                    <AdminRoute path="/brands/:id/edit" exact component={EditBrandScreen}></AdminRoute>
                     <Route path="/order/:id" component={OrderScreen}></Route>
                   </Switch>
                 </div>

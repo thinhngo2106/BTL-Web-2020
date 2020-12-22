@@ -2,6 +2,7 @@
     padding: 1 rem;
     border: 0.1rem solid transparent;
     border: 0.5rem;
+    display: flex;
 }
 .alert-info{
     color: #2020a0;
@@ -13,6 +14,5 @@
 }
 
 .error{
-    margin-top: 15px;
-    height: 21px;
+    display: flex;
   }

@@ -14,7 +14,9 @@ router.get('/', expressAsyncHandler(async( req,res) => {
     const offset = page ? parseInt(page * limit) : 0;
     const products = await db.products.findAll({
         include:[{
-            model: db.productdetail
+            model: db.productdetail,
+            offset: 0,
+            limit: 1,
         }],
         where:
             Sequelize.literal('MATCH (productName) AGAINST (:name IN BOOLEAN MODE) ')

@@ -17,7 +17,7 @@ export default function ProductEditScreen(props) {
   const [quantityInStock, setQuantityInStock] = useState('');
   const [brand, setBrand] = useState('');
   const [description, setDescription] = useState('');
-const listCategory = useSelector((state) => state.listCategory);
+  const listCategory = useSelector((state) => state.listCategory);
   const {loading: loadingCategory, error: errorCategory, categories} = listCategory;
   const listBrand = useSelector((state) => state.listBrand);
   const {loading: loadingBrand, error: errorBrand, brands} = listBrand;

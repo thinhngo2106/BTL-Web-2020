@@ -14,6 +14,8 @@ import {
 } from '../../constants/productConstants';
 import {listProductCategories, listProductBrands} from "../../actions/productActions";
 import Axios from 'axios';
+import '../../utils';
+import { sizeShoes } from '../../utils';
 
 
 
@@ -27,9 +29,10 @@ export const Products = () => {
 };
 
 export const ProductsManage = (props) => {
-
+  const param = new URLSearchParams(props.location.search);
+  const page = param.get("page");
   const productList = useSelector((state) => state.productList);
-  const {loading, error, products} = productList;
+  const {loading, error, products, pages} = productList;
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const dispatch = useDispatch();
@@ -45,14 +48,15 @@ export const ProductsManage = (props) => {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
     dispatch(
-      listProducts()
+      listProducts(page)
     );
     
   }, [
     dispatch,
     props.history,
     successDelete,
-    userInfo._id,
+    userInfo.id,
+    page
   ]);
   const deleteHandler = (product) => {
     if (window.confirm('Are you sure to delete?')) {
@@ -62,7 +66,10 @@ export const ProductsManage = (props) => {
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
-
+  const getFilterUrl = (filter) => {
+    const filterPage = filter.page > 0 ? filter.page : filter.page === 0 ? 1 : page >= 0 ? page : 1;
+    return `/products/productsManage?page=${filterPage-1}`;
+}
   return (
     <div className='admin-listproducts'>
       {loadingDelete && <LoadingBox></LoadingBox>}
@@ -118,6 +125,23 @@ export const ProductsManage = (props) => {
               ))}
             </tbody>
           </table>
+          <div className="pagination-container">
+                    <div className="row center pagination">
+                        {[...Array(pages).keys()].map((x) => (
+                        <Link
+                            className={x === page ? 'active' : ''}
+                            key={x}
+                            to={getFilterUrl({page: x+1})}
+                        >
+                            <li className='page-item'>
+                                <span>
+                                    {x+1} 
+                                </span>
+                            </li>
+                        </Link>
+                      ))}
+              </div>
+            </div>
       </>
       )}
     </div>
@@ -141,6 +165,7 @@ export const AddProducts = (props) => {
   const listBrand = useSelector((state) => state.listBrand);
   const {loading: loadingBrand, error: errorBrand, brands} = listBrand;
   const productCreate = useSelector((state) => state.productCreate);
+  const sizeQuantity = sizeShoes;
   const {
     loading: loadingCreate,
     error: errorCreate,
@@ -165,10 +190,10 @@ export const AddProducts = (props) => {
       createProduct({
         name,
         price,
-        quantityInStock,
         image,
         category,
         brand,
+        sizeQuantity,
       })
     );
   };  
@@ -203,8 +228,8 @@ export const AddProducts = (props) => {
   return (
     <div className='admin-products addproduct'>
       <form className="form a list" onSubmit={submitHandler}> 
+        <div><h1>ADD Product</h1></div>
         <div>
-        <h1>ADD Product</h1>
             <label htmlFor="name">Name</label>
               <input
                 id="name"
@@ -223,17 +248,7 @@ export const AddProducts = (props) => {
                 value={price}
                 onChange={(e) => setPrice(parseInt(e.target.value))}
               ></input>
-        </div>
-        <div>
-            <label htmlFor="quantityInStock">Count In Stock</label>
-              <input
-                id="quantityInStock"
-                type="text"
-                placeholder="Enter quantityInStock"
-                value={quantityInStock}
-                onChange={(e) => setQuantityInStock(parseInt(e.target.value))}
-              ></input>  
-        </div>    
+        </div>  
         <div>
               <label htmlFor="category">Category</label>
               <select className="categories-list" 

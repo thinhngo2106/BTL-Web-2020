@@ -20,17 +20,42 @@ import {
         PRODUCT_BRAND_LIST_REQUEST,
         PRODUCT_BRAND_LIST_SUCCESS,
         PRODUCT_BRAND_LIST_FAIL,
+        CREATE_CATEGORY_REQUEST,
+        CREATE_CATEGORY_SUCCESS,
+        CREATE_CATEGORY_FAIL,
+        CREATE_BRAND_REQUEST,
+        CREATE_BRAND_SUCCESS,
+        CREATE_BRAND_FAIL,
+        DELETE_CATEGORY_REQUEST,
+        DELETE_CATEGORY_SUCCESS,
+        DELETE_CATEGORY_FAIL,
+        DELETE_BRAND_REQUEST,
+        DELETE_BRAND_SUCCESS,
+        DELETE_BRAND_FAIL,
+        CATEGORY_UPDATE_REQUEST,
+        CATEGORY_UPDATE_SUCCESS,
+        CATEGORY_UPDATE_FAIL,
+        BRAND_UPDATE_REQUEST,
+        BRAND_UPDATE_SUCCESS,
+        BRAND_UPDATE_FAIL,
+        CATEGORY_DETAILS_REQUEST,
+        CATEGORY_DETAILS_SUCCESS,
+        CATEGORY_DETAILS_FAIL,
+        BRAND_DETAILS_REQUEST,
+        BRAND_DETAILS_SUCCESS,
+        BRAND_DETAILS_FAIL,
     } from "../constants/productConstants";
 import Axios from "axios";
 
 
-export const listProducts = () => async (dispatch) => {
-  
+export const listProducts = (pageNumber) => async (dispatch) => {
     dispatch({
       type: PRODUCT_LIST_REQUEST,
     });
     try {
-      const { data } = await Axios.get('/api/products');
+      const { data } = await Axios.get('/api/products', {params:{
+        page: pageNumber ? pageNumber : 0,
+      }});
       console.log(data);
       dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
     } catch (error) {
@@ -112,6 +137,7 @@ export const createProduct = (product) => async (dispatch, getState) => {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       }
     );
+    console.log(product);
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
       payload: data,
@@ -144,3 +170,176 @@ export const updateProduct = (product) => async (dispatch, getState) => {
   }
 };
 
+export const createCategory = (category) => async (dispatch, getState) => {
+  dispatch({ type: CREATE_CATEGORY_REQUEST });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = await Axios.post(
+      '/api/products/category',
+      category,
+      {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      }
+    );
+    dispatch({
+      type: CREATE_CATEGORY_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: CREATE_CATEGORY_FAIL, payload: message });
+  }
+};
+
+export const deleteCategory = (categoryId) => async (dispatch, getState) => {
+  dispatch({ type: DELETE_CATEGORY_REQUEST, payload: categoryId});
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = Axios.delete(`/api/products/category/${categoryId}`, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
+    dispatch({ type: DELETE_CATEGORY_SUCCESS });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: DELETE_CATEGORY_FAIL, payload: message });
+  }
+};
+
+export const updateCategory = (category) => async (dispatch, getState) => {
+  dispatch({ type: CATEGORY_UPDATE_REQUEST, payload: category});
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = Axios.put(`/api/products/category/${category.idCategory}`, category, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
+    dispatch({ type: CATEGORY_UPDATE_SUCCESS });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: CATEGORY_UPDATE_FAIL, payload: message });
+  }
+};
+
+export const detailsCategory = (categoryId) => async (dispatch, getState) => {
+  dispatch({ type: CATEGORY_DETAILS_REQUEST, payload: categoryId });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = await Axios.get(`/api/products/category/${categoryId}`, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
+    dispatch({ type: CATEGORY_DETAILS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: CATEGORY_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const deleteBrand = (brandId) => async (dispatch, getState) => {
+  dispatch({ type: DELETE_BRAND_REQUEST, payload: brandId });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = Axios.delete(`/api/products/brand/${brandId}`, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
+    dispatch({ type: DELETE_BRAND_SUCCESS});
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: DELETE_BRAND_FAIL, payload: message });
+  }
+};
+
+
+
+export const createBrand = (brand) => async (dispatch, getState) => {
+  dispatch({ type: CREATE_BRAND_REQUEST });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = await Axios.post(
+      '/api/products/brand',
+      brand,
+      {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      }
+    );
+    dispatch({
+      type: CREATE_BRAND_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: CREATE_BRAND_FAIL, payload: message });
+  }
+};
+
+export const updateBrand = (brand) => async (dispatch, getState) => {
+  dispatch({ type: BRAND_UPDATE_REQUEST, payload: brand});
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = Axios.put(`/api/products/brand/${brand.idBrand}`, brand, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
+    dispatch({ type: BRAND_UPDATE_SUCCESS});
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: BRAND_UPDATE_FAIL, payload: message });
+  }
+};
+
+export const detailsBrand = (brandId) => async (dispatch, getState) => {
+  
+  dispatch({ type: BRAND_DETAILS_REQUEST, payload: brandId });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = await Axios.get(`/api/products/brand/${brandId}`, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
+    dispatch({ type: BRAND_DETAILS_SUCCESS, payload: data });
+    console.log(data);
+  } catch (error) {
+    dispatch({
+      type: BRAND_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};

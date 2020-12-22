@@ -20,7 +20,6 @@ export const SidebarData = [
   },
   {
     title: 'Sản phẩm',
-    path: '/products',
     icon: <FaIcons.FaCartPlus />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -48,7 +47,6 @@ export const SidebarData = [
   },
   {
     title: 'Phân loại sản phẩm',
-    path: '/productsType',
     icon: <FaIcons.FaEnvelopeOpenText />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -69,7 +67,6 @@ export const SidebarData = [
   },
   {
     title: 'Nhãn hàng',
-    path: '/brands',
     icon: <IoIcons.IoMdHelpCircle />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,

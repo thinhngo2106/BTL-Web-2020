@@ -367,6 +367,12 @@ img.small {
   font-weight: bold;
 }
 
+.messagebox{
+  position: relative;
+  left: 2%;
+}
+
+
 @media screen and (max-width: 992px) {
   table {
     display: block;

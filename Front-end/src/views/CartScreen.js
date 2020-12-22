@@ -44,11 +44,13 @@ export default function CartScreen(props) {
                 <h2>Giỏ hàng</h2>
                     {cartItems.length ===0 ?( 
                     <div className="cart-empty">
-                    <MessageBox className="messagebox"> <div className="message-empty">Giỏ hàng đang trống</div>
+                    <div className="messagebox">
+                    <MessageBox > <div className="message-empty">Giỏ hàng đang trống</div>
                     <div className="message-empty">  
                         <Link to ="/">Quay về trang chủ</Link>
                     </div>
                     </MessageBox>
+                    </div>
                     </div>)
                     : (
                         <div>
