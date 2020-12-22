@@ -85,7 +85,7 @@ export default function OrderScreen(props) {
                             </Link>
                           </div>
                           <div>
-                            {item.quantityOrder} x ${converToPrice(item.priceEach)} = ${converToPrice(item.quantityOrder * item.priceEach)}
+                            {item.quantityOrder} x {converToPrice(item.priceEach)}₫ = {converToPrice(item.quantityOrder * item.priceEach)}₫
                           </div>
                         </div>
                         </div>
@@ -107,21 +107,21 @@ export default function OrderScreen(props) {
               {/* </li>
               <li> */}
               <div className="col-md-8">
-                <div className="row">
-                  <div><p>Items: {numberWithCommas(order)}</p></div>
+                <div className="row"> 
+                  <div><p>Items: {numberWithCommas(order)}₫ </p></div>
                   
                 </div>
               {/* </li>
               <li> */}
                 <div className="row">
-                  <div><p>Shipping: ${order.shippingPrice}</p></div>
+                  <div><p>Shipping: {order.shippingPrice}₫ </p></div>
                   
                 </div>
               {/* </li>
               <li> */}
                 <div className="row">
                   <div>
-                    <strong> <p>Order Total: {sum(parseInt(priceOrder(order)), parseInt(order.shippingPrice))}</p></strong>
+                    <strong> <p>Order Total: {sum(parseInt(priceOrder(order)), parseInt(order.shippingPrice))} ₫</p></strong>
                   </div>
                 </div>
               {/* </li>

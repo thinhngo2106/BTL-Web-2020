@@ -18,9 +18,11 @@ export default function OrderHistoryScreen(props) {
     dispatch(listOrderMine());
   }, [dispatch]);
   function numberWithCommas(order) {
-    const x = order.orderdetails.reduce((a, c) => a + c.quantityOrder * c.priceEach,0);
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const x = order.orderdetails.reduce((a, c) => a + c.quantityOrder * c.priceEach,0) ;
+    const price = x + parseInt(order.shippingPrice);
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+  
 
 
   return (

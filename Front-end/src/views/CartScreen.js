@@ -32,7 +32,10 @@ export default function CartScreen(props) {
     const checkoutHandler = () => {
         props.history.push('/signin?redirect=shipping');
       };
-  
+
+    function converToPrice(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     return (
         <div className="cart">
@@ -93,7 +96,7 @@ export default function CartScreen(props) {
                                             </td>
 
                                             <td className="column5">
-                                                <span className="item-attribute">{item.price}  ₫ </span>
+                                                <span className="item-attribute">{converToPrice(item.price)}₫ </span>
                                             </td>
 
                                             <td className="column6">
@@ -116,7 +119,7 @@ export default function CartScreen(props) {
                                             </td>
 
                                             <td className="column7">
-                                                {cartItems.reduce((a, c) => c.price * c.qty, 0)}
+                                                {converToPrice(cartItems.reduce((a, c) => c.price * c.qty, 0))} ₫
                                             </td>
 
                                             <td className="column8">
@@ -141,7 +144,7 @@ export default function CartScreen(props) {
                             <span className="total-price"> 
                                         Tổng tiền sản phẩm ({cartItems.reduce((a, c) => a + c.qty, 0)} Sản phẩm) : &nbsp;
                                         <span className="money">
-                                            {cartItems.reduce((a, c) => a + c.price * c.qty, 0)} ₫
+                                            {converToPrice(cartItems.reduce((a, c) => a + c.price * c.qty, 0))}₫
                                         </span>
                                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                             </span>
