@@ -281,13 +281,9 @@ transform: translateY(1px);
 
 img.small {
   max-width: fit-content;
-  width: 100%;
-  }
+  width: 85%;
+}
 
-  img.small1 {
-    max-width: fit-content;
-    width: 55%;
-  }
 .column1 {
   width: 50px;
   /* padding-left: 40px; */
@@ -422,7 +418,7 @@ img.small {
 }
 
 @media (max-width: 576px) {
-  .container-table100 {
+  .container-table {
     padding-left: 15px;
     padding-right: 15px;
   }

@@ -42,21 +42,23 @@ export default function CategoryScreen(props) {
             ) : ( 
             <div className="home">    
                 <div className="home__container">
-                    <div>
-                        <ul>
+                    <div className="price-filter-container ">
+                        <ul className="price-filter">
                             {prices.map((price) => (
-                                <li key={price.tag}>
+                                <li key={price.tag} className="" >
                                     <Link 
                                         to={getFilterUrl({ min: price.min, max: price.max })}
                                     >
-                                    <input type="radio"></input>
+                                    {/* <input type="radio" style={{}}></input> */}
                                     <span>{price.tag}</span>
                                     </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
-                    <div className="home__row">
+                </div>
+                
+                <div className="home__row" >
                         {
                             data.length > 0 ? (
                                 data[0].products.map((product) => (
@@ -66,7 +68,7 @@ export default function CategoryScreen(props) {
                                 <MessageBox variant="danger"> "Không có sản phẩm theo yêu cầu"</MessageBox>
                             )}
 
-                    </div>
+                    
                 </div>
             </div>
             

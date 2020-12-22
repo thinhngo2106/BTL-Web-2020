@@ -62,7 +62,7 @@ export default function CartScreen(props) {
                                     <table className="cart-table">
                                         <thead className="cart-head">
                                             <tr>
-                                            <th className="column1"><input type="checkbox"/></th>
+                                            {/* <th className="column1"><input type="checkbox"/></th> */}
                                             <th className="column2">Ảnh</th>
                                             <th className="column3">Tên sản phẩm</th>
                                             <th className="column4">Kích cỡ</th>
@@ -77,9 +77,9 @@ export default function CartScreen(props) {
                                         <tbody className="cart-items">
                                             {cartItems.map((item) => (
                                             <tr key={item.id}>
-                                            <td className="column1">
+                                            {/* <td className="column1">
                                                 <input type="checkbox"/>
-                                            </td>
+                                            </td> */}
 
                                             <td className="column2">
                                                 <Link to={`/product/${item.product}`}>

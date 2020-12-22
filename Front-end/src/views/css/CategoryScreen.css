@@ -1,3 +1,46 @@
+.home {
+  display: flex;
+  flex-direction: row;
+}
+
+.price-filter-container {
+  /* display: flex; 
+  flex-direction: row; */
+  /* padding: 50px; */
+  width: 50%;
+  
+}
+
+.price-filter {
+  /* padding: 1%; */
+   /* width:75%; */
+  /* display: inline;  */
+}
+
+.price-filter li {
+ /* display:block;
+float:left;  */
+width: 220px;
+  border: 1px solid #ddd; 
+  
+  font-size: 18px;
+  padding: 12px; 
+  
+}
+.price-filter li a {
+  text-decoration: none; 
+  color: black; 
+  
+  /* background-color: #f6f6f6;  */
+  /* padding: 12px; 
+  display: block; */
+}
+
+.price-filter li:hover {
+  background-color: #eee; 
+} 
+
+
 .pagination-container {
     text-align: center;
     padding: 20pt;
