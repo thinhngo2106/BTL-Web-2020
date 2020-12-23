@@ -18,6 +18,7 @@ export default function ProductEditScreen(props) {
   const [quantityInStock, setQuantityInStock] = useState('');
   const [brand, setBrand] = useState('');
   const [description, setDescription] = useState('');
+  const [idProduct, setIdProduct] = useState(''); 
   const listCategory = useSelector((state) => state.listCategory);
   const {loading: loadingCategory, error: errorCategory, categories} = listCategory;
   const listBrand = useSelector((state) => state.listBrand);
@@ -40,12 +41,15 @@ export default function ProductEditScreen(props) {
     if (successUpdate) {
       props.history.push('/products/productsManage');
     }
+    
     if (!product || successUpdate) {
         dispatch({ type: PRODUCT_UPDATE_RESET })
         dispatch(detailsProduct(productId));
         dispatch(listProductCategories());
         dispatch(listProductBrands());
+        
     } else {
+
         setName(product.productName);
         setPrice(product.productPrice);
         setImage(product.productdetails[0].image);
@@ -56,7 +60,7 @@ export default function ProductEditScreen(props) {
     }
 
     
-  }, [product, dispatch, size, productId, successUpdate, props.history]);
+  }, [productId, product, dispatch, size, successUpdate, props.history]);
   const submitHandler = (e) => {
     e.preventDefault();
     // TODO: dispatch update product
