@@ -63,14 +63,14 @@ function Header(props) {
                       
                       <Dropdown.Toggle id="dropdown-basic" variant="warning">
                       
-                        <div className="header__option">
+                        <div className="header__option great">
                           <span className="header__optionLineOne">Xin chào!</span>
 
                           <span className="header__optionLineTwo">{userInfo.Fname} {userInfo.Lname}</span>     
                         </div> 
                       </Dropdown.Toggle>
 
-                      <Dropdown.Menu className="dropdown-signout1" > 
+                      <Dropdown.Menu className="dropdown-signout" > 
                         <Dropdown.Item onClick={signoutHandler}> 
                                   Đăng xuất
                         </Dropdown.Item>
