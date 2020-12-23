@@ -1,66 +1,68 @@
-const data = {
-    products: [
-      {
-        _id: '1',
-        name: 'Converse',
-        category: 'Shoes',
-        image: "..//../image/Product/Converse/162053c-7.jpg",
-        price: 120,
-        countInStock: 10,
-        brand: 'Converse',
-        description: 'Giày Converse Chuck Taylor All Star Wordmark 2.0 với nền trắng basic cùng logo Converse màu xanh in ngang dọc thân giày tạo điểm nhấn cho sản phẩm. Đây là một mẫu giày thời trang tinh tế, đơn giản và phù hợp với nhiều sự kiện.',
-      },
-      {
-        _id: '2',
-        name: 'Converse',
-        category: 'Shoes',
-        image: "..//../image/Product/Converse/165958c-9.jpg",
-        price: 120,
-        countInStock: 10,
-        brand: 'Converse',
-        description: 'Giay dep',
-      },
-      {
-        _id: '3',
-        name: 'Converse',
-        category: 'Shoes',
-        image: "..//../image/Product/Converse/165958c-9.jpg",
-        price: 120,
-        countInStock: 10,
-        brand: 'Converse',
-        description: 'Converse CX sở hữu những cải tiến đáng giá nhất của hãng từ chất liệu làm nên sản phẩm cho đến bộ đế đầy tính sáng tạo và đột phá, làm nên đặc trưng không thể trộn lẫn: tấm vải nền mang tên CX, một loại vải tổng hợp vừa dẻo dai nhưng vẫn tạo ra sự ôm sát vừa vặn với chân người dùng đặc biệt là vẫn giữ được vẻ ngoài đầy tính truyền thống của Converse. Tiếp theo là hệ thống đệm bọt CX là kết hợp giữa đế PU và đế Phylon được xếp chồng lên nhau mang lại sự êm ái khi di chuyển',
-      },
-      {
-        _id: '4',
-        name: 'Converse',
-        category: 'Shoes',
-        image: "..//../image/Product/Converse/165958c-9.jpg",
-        price: 120,
-        countInStock: 10,
-        brand: 'Converse',
-        description: 'Giay dep',
-      },
-      {
-        _id: '5',
-        name: 'Converse',
-        category: 'Shoes',
-        image: "..//../image/Product/Converse/165958c-9.jpg",
-        price: 120,
-        countInStock: 0,
-        brand: 'Converse',
-        description: 'Giay dep',
-      },
-      {
-        _id: '6',
-        name: 'Converse',
-        category: 'Shoes',
-        image: "..//../image/Product/Converse/165958c-9.jpg",
-        price: 120,
-        countInStock: 10,
-        brand: 'Converse',
-        description: 'Giay dep',
-      },
-    ],
-};
-
-module.exports = data;
+const sizeShoes = [
+  {
+      idSize: 1,
+      quantityInStock: 1,
+      productSize:"Size 4.0US - Size 35.0VN - 22.0CM",
+  },
+  {
+      idSize: 2,
+      quantityInStock: 1,
+      productSize:"Size 4.5US - Size 36.0VN - 22.5CM"
+  },
+  {
+      idSize: 3,
+      quantityInStock: 1,
+      productSize:"Size 5.0US - Size 36.5VN - 23.0CM"
+  },
+  {
+      idSize: 4,
+      quantityInStock: 1,
+      productSize:"Size 5.5US - Size 37.0VN - 23.5CM"
+  },
+  {
+      idSize: 5,
+      quantityInStock: 1,
+      productSize:"Size 6.0US - Size 38.0VN - 24.0CM"
+  },
+  {
+      idSize: 6,
+      quantityInStock: 1,
+      productSize:"Size 6.5US - Size 38.5VN - 24.5CM"
+  },
+  {
+      idSize: 7,
+      quantityInStock: 1,
+      productSize:"Size 7.0US - Size 39.0VN - 25.0CM"
+  },
+  {
+      idSize: 8,
+      quantityInStock: 1,
+      productSize:"Size 7.5US - Size 40.0VN - 25.5CM"
+  },
+  {
+      idSize: 9,
+      quantityInStock: 1,
+      productSize:"Size 8.0US - Size 40.5VN - 26.0CM"
+  },
+  {
+      idSize: 10,
+      quantityInStock: 1,
+      productSize:"Size 8.5US - Size 41.0VN - 26.5CM"
+  },
+  {
+      idSize: 11,
+      quantityInStock: 1,
+      productSize:"Size 9.0US - Size 42.0VN - 27.0CM"
+  },
+  {
+      idSize: 12,
+      quantityInStock: 1,
+      productSize:"Size 9.5US - Size 42.5VN - 27.5CM"
+  },
+  {
+      idSize: 13,
+      quantityInStock: 1,
+      productSize:"Size 10 US - Size 43.0VN - 28.0CM"
+  },
+]
+module.exports = sizeShoes;

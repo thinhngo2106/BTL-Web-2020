@@ -8,6 +8,11 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import {Link} from "react-router-dom";
 import {listProductCategories} from "../actions/productActions";
+import { IconContext } from "react-icons/lib";
+import * as FaIcons from "react-icons/fa";
+import 'bootstrap/dist/js/bootstrap.bundle';
+import 'jquery/dist/jquery.min.js';
+
 
 
 
@@ -28,16 +33,31 @@ export default function NavBar(pros) {
 
             <div className= "navbarItems">
                 <div className="item-big">
+                 
+                <div className="dropdown">
+                <button type="button" className="navbar-button btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                <FaIcons.FaBars  /> &nbsp;
+                  Trang chủ
+                  </button>
+                  <div className="dropdown-menu">
+                      <button className="signout-button " >
+                        <span className='dropdown-content'> zzz </span>
+                  </button>
+                  </div>
+               </div>
+                    <div>
                     {categories.map((category) => (
                         <Link key={category.idCategory} to={`/category?name=${category.categoryName}`} style={{textDecoration: 'none'}}>
                           <span key={category.idCategory}> 
-                            <button id="navbar-button"> 
+                            <button className="navbar-button"> 
                               {category.categoryName} 
                             </button>
                           </span>
                         </Link>
+                        
                     ))
                     }
+                    </div>
                 </div>
             </div>
             )}

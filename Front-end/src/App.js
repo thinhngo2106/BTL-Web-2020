@@ -28,6 +28,9 @@ import {ProductsTypeManage, AddProductsType,  EditCategoryScreen} from "./views/
 import {BrandsManage, AddBrands, EditBrandScreen} from "./views/pages/Brands";
 import ProductEditScreen from './views/pages/EditProductScreen';
 import OrderScreen from "./views/OrderScreen";
+import ChangePassWordScreen from './views/ChangePasswordScreen';
+import PrivateRoute from './components/PrivateRoute';
+import ProfileScreen from './views/ProfileScreen';
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -67,6 +70,8 @@ function App() {
                     <AdminRoute path="/brands/addBrands" exact component={AddBrands}></AdminRoute>
                     <AdminRoute path="/brands/:id/edit" exact component={EditBrandScreen}></AdminRoute>
                     <Route path="/order/:id" component={OrderScreen}></Route>
+                    <PrivateRoute path="/changepassword" component={ChangePassWordScreen}></PrivateRoute>
+                    <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
                   </Switch>
                 </div>
               </div>
@@ -99,6 +104,8 @@ function App() {
                   ></Route>
                   <Route path="/category" component={CategoryScreen}></Route>
                   <Route path="/order/:id" component={OrderScreen}></Route>
+                  <PrivateRoute path="/changepassword" component={ChangePassWordScreen}></PrivateRoute>
+                  <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
                 </Switch>
               </div>
             </>
