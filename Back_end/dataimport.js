@@ -38,7 +38,8 @@ const data = {
         address:'',
         phone: '0123456789',
         isAdmin: true,
-        },             
+        }
+    
     ],
     products:[
         {
@@ -96,7 +97,7 @@ const data = {
             productDescription:"Không phải lần đầu tiên xuất hiện, nhưng sản phẩm mang tên giày Vans Style 36 Marshmallow đã từng khuấy đảo được làng thời trang những năm trước. Đây cũng là sản phẩm có mức giá “đội” lên rất nhiều bởi sức hút của nhiều ngôi sao đình đám cũng sử dụng giày Vans Style 36 Marshmallow như anh chàng G-Dragon của Big Bang.",
             idBrand:2,
             idCategory:2,
-        },
+        }
         
     ],
     productdetail: [
@@ -139,7 +140,8 @@ const data = {
             idProduct: 7,
             idImage: 1,
             image: "..//../image/Product/Vans/vans3.jpg",
-        },
+        }
+        
     ],
     brands:[
         {
@@ -149,7 +151,7 @@ const data = {
         {
             idBrand: 2,
             brandName: 'Vans',
-        },
+        }
     ],
     categories:[
         {
