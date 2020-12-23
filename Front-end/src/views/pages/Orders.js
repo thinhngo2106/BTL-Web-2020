@@ -45,7 +45,7 @@ export const OrdersManage = (props) => {
   }
   return (
     <div className="order-admin-list">
-      <h1>Orders</h1>
+      <h1>Quản lý đơn hàng</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
       {loading ? (
@@ -93,14 +93,14 @@ export const OrdersManage = (props) => {
                       props.history.push(`/order/${order.idOrder}`);
                     }}
                   >
-                    Details
+                    Chi tiết
                   </button>
                   <button
                     type="button"
                     className="small"
                     onClick={() => deleteHandler(order)}
                   >
-                    Delete
+                    Xóa
                   </button>
                   <button 
                     type="button"

@@ -38,11 +38,11 @@ function UsersManage(props) {
 }
   return (
     <div className="users">
-    <h1>Users</h1>
+    <h1></h1>
     {loadingDelete && <LoadingBox></LoadingBox>}
     {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
     {successDelete && (
-      <MessageBox variant="success">User Deleted Successfully</MessageBox>
+      <MessageBox variant="success">Xóa người dùng thành công</MessageBox>
     )}
     {loading ? (
       <LoadingBox></LoadingBox>
@@ -55,10 +55,10 @@ function UsersManage(props) {
         <thead>
           <tr>
             <th>ID</th>
-            <th>NAME</th>
-            <th>EMAIL</th>
+            <th>Tên</th>
+            <th>Email</th>
             <th>IS ADMIN</th>
-            <th>ACTIONS</th>
+            <th>Thao tác</th>
           </tr>
         </thead>
         <tbody>
@@ -75,14 +75,14 @@ function UsersManage(props) {
                   className="small"
                   onClick={() => props.history.push(`/user/${user.idUser}/edit`)}
                 >
-                  Edit
+                  Chỉnh sửa
                 </button>
                 <button
                   type="button"
                   className="small"
                   onClick={() => deleteHandler(user)}
                 >
-                  Delete
+                  Xóa
                 </button>
               </td>
             </tr>
