@@ -38,7 +38,7 @@ function UsersManage(props) {
 }
   return (
     <div className="users">
-    <h1>Users</h1>
+    <h1></h1>
     {loadingDelete && <LoadingBox></LoadingBox>}
     {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
     {successDelete && (
@@ -58,7 +58,7 @@ function UsersManage(props) {
             <th>Tên</th>
             <th>Email</th>
             <th>IS ADMIN</th>
-            <th>ACTIONS</th>
+            <th>Thao tác</th>
           </tr>
         </thead>
         <tbody>

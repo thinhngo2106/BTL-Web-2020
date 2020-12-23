@@ -81,7 +81,7 @@ export const ProductsManage = (props) => {
           <MessageBox variant="danger"> {error}</MessageBox>
         ) : (           
       <>
-        <h1> Products Manage</h1>
+        <h1>Quản lý sản phẩm</h1>
         <table className="table">
             <thead>
               <tr>
@@ -91,7 +91,7 @@ export const ProductsManage = (props) => {
                 <th>Giá tiền</th>
                 <th>Danh mục</th>
                 <th>Nhãn hàng</th>
-                <th>ACTIONS</th>
+                <th>Thao tác</th>
               </tr>
             </thead>
             <tbody>
