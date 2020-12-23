@@ -21,12 +21,16 @@ function UsersManage(props) {
     success: successDelete,
   } = userDelete;
   const dispatch = useDispatch();
+
+
   useEffect(() => {
     dispatch(listUsers(page));
     dispatch({
       type: USER_DELETE_RESET,
     });
   }, [dispatch, successDelete, page]);
+
+  
   const deleteHandler = (user) => {
     if (window.confirm('Are you sure?')) {
       dispatch(deleteUser(user.idUser));
@@ -38,76 +42,76 @@ function UsersManage(props) {
 }
   return (
     <div className="users">
-    <h1>Users</h1>
-    {loadingDelete && <LoadingBox></LoadingBox>}
-    {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
-    {successDelete && (
-      <MessageBox variant="success">User Deleted Successfully</MessageBox>
-    )}
-    {loading ? (
-      <LoadingBox></LoadingBox>
-    ) : error ? (
-      <MessageBox variant="danger">{error}</MessageBox>
-    ) : (
+      <h1>Users</h1>
+      {loadingDelete && <LoadingBox></LoadingBox>}
+      {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
+      {successDelete && (
+        <MessageBox variant="success">User Deleted Successfully</MessageBox>
+      )}
+      {loading ? (
+        <LoadingBox></LoadingBox>
+      ) : error ? (
+        <MessageBox variant="danger">{error}</MessageBox>
+      ) : (
       <div>
-      <div className="table-content">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>EMAIL</th>
-            <th>IS ADMIN</th>
-            <th>ACTIONS</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.idUser}>
-              <td>{user.idUser}</td>
-              <td>{user.userFname} {user.userLname}</td>
-              <td>{user.userEmail}</td>
-             
-              <td>{user.isAdmin ? 'YES' : 'NO'}</td>
-              <td>
-                <button
-                  type="button"
-                  className="small"
-                  onClick={() => props.history.push(`/user/${user.idUser}/edit`)}
-                >
-                  Edit
-                </button>
-                <button
-                  type="button"
-                  className="small"
-                  onClick={() => deleteHandler(user)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      </div>
-      <div className="pagination-container">
-                    <div className="row center pagination">
-                        {[...Array(pages).keys()].map((x) => (
-                        <Link
-                            className={x === page ? 'active' : ''}
-                            key={x}
-                            to={getFilterUrl({page: x+1})}
-                        >
-                            <li className='page-item'>
-                                <span>
-                                    {x+1} 
-                                </span>
-                            </li>
-                        </Link>
-                      ))}
-              </div>
+        <div className="table-content">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>IS ADMIN</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user.idUser}>
+                  <td>{user.idUser}</td>
+                  <td>{user.userFname} {user.userLname}</td>
+                  <td>{user.userEmail}</td>
+                
+                  <td>{user.isAdmin ? 'YES' : 'NO'}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="small"
+                      onClick={() => props.history.push(`/user/${user.idUser}/edit`)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      className="small"
+                      onClick={() => deleteHandler(user)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="pagination-container">
+            <div className="row center pagination">
+                  {[...Array(pages).keys()].map((x) => (
+                  <Link
+                      className={x === page ? 'active' : ''}
+                      key={x}
+                      to={getFilterUrl({page: x+1})}
+                  >
+                      <li className='page-item'>
+                          <span>
+                              {x+1} 
+                          </span>
+                      </li>
+                  </Link>
+                ))}
             </div>
-      </div>
+          </div>
+    </div>
     )}
   </div>
   );

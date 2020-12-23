@@ -69,7 +69,7 @@ export const listOrderMine = () => async (dispatch, getState) => {
       }
 };
 
-export const listOrders = () => async (dispatch, getState) => {
+export const listOrders = (pageNumber) => async (dispatch, getState) => {
   dispatch({ type: ORDER_LIST_REQUEST });
   const {
     userSignin: { userInfo },
@@ -77,8 +77,12 @@ export const listOrders = () => async (dispatch, getState) => {
   try {
     const { data } = await Axios.get(`/api/orders`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
+      params:{
+        page: pageNumber ? pageNumber : 0,
+      }
     });
-    console.log(data);
+
+    //console.log(data);
     dispatch({ type: ORDER_LIST_SUCCESS, payload: data });
   } catch (error) {
     const message = 

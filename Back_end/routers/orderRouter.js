@@ -70,16 +70,23 @@ orderRouter.get(
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
+    const limit =  10;
+    const search = req.query.search || '';
+    const page = req.query.page >= 0 ? req.query.page : 0;
+    const offset = page ? parseInt(page * limit) : 0;
     const orders = await db.orders.findAll({
-    include:[{
-        model: db.orderdetail
-    },{
-      model: db.users
-    }
-  ],
-  }
-)
-res.send(orders)
+      offset: offset,
+      limit: limit,
+      // include:[{
+      //     model: db.orderdetail
+      // },{
+      //   model: db.users
+      // }
+      // ],
+    });
+    const pages = await db.orders.count();
+    const totalPages = Math.ceil(pages/ limit);
+    res.send({orders, totalPages});
 }));
 
 orderRouter.put(

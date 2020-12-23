@@ -52,7 +52,7 @@ function App() {
          
           {userInfo && userInfo.isAdmin ? (
             <>
-              <div className="row">
+              <div className="row ahihi">
                 <AdminSidebar></AdminSidebar>
                 <div className="row contentInside">
                   <Switch>
