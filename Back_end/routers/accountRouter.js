@@ -56,8 +56,17 @@ router.get(
     isAuth,
     isAdmin,
     expressAsyncHandler(async (req, res) => {
-      const users = await db.users.findAll();
-      res.send(users);
+      const limit =  10;
+      const search = req.query.search || '';
+      const page = req.query.page >= 0 ? req.query.page : 0;
+      const offset = page ? parseInt(page * limit) : 0;      
+      const users = await db.users.findAll({
+        offset: offset,
+        limit: limit,
+      });
+      const pages = await db.users.count();
+      const totalPages = Math.ceil(pages/ limit);
+      res.send({users, totalPages});
     })
   );
 

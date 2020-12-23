@@ -1,6 +1,7 @@
 const db = require('../models');
 const expressAsyncHandler =  require('express-async-handler');
 const data = require("../dataimport");
+const { search } = require('../routers/uploadRouter');
 
 
 module.exports.productdetail = expressAsyncHandler(async( req,res) => {
@@ -31,6 +32,7 @@ module.exports.productdetail = expressAsyncHandler(async( req,res) => {
 
 module.exports.products =  expressAsyncHandler(async(req,res)=>{
     const limit =  10;
+    const search = req.query.search || '';
     const page = req.query.page >= 0 ? req.query.page : 0;
     const offset = page ? parseInt(page * limit) : 0;
     const products = await db.products.findAll({
@@ -44,7 +46,8 @@ module.exports.products =  expressAsyncHandler(async(req,res)=>{
             },
             {
                 model: db.categories,
-            }
+            },
+            
         ],
         offset: offset,
         limit: limit,

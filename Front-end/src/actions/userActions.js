@@ -69,7 +69,7 @@ export const register = (fname, lname, email, password) => async (dispatch) => {
     });
   }
 };
-export const listUsers = () => async (dispatch, getState) => {
+export const listUsers = (pageNumber) => async (dispatch, getState) => {
   dispatch({ type: USER_LIST_REQUEST });
   try {
     const {
@@ -79,6 +79,9 @@ export const listUsers = () => async (dispatch, getState) => {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
+      params:{
+        page: pageNumber ? pageNumber : 0,
+      }
     });
     dispatch({ type: USER_LIST_SUCCESS, payload: data });
   } catch (error) {
