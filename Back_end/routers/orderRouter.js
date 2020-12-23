@@ -77,12 +77,12 @@ orderRouter.get(
     const orders = await db.orders.findAll({
       offset: offset,
       limit: limit,
-      // include:[{
-      //     model: db.orderdetail
-      // },{
-      //   model: db.users
-      // }
-      // ],
+      include:[{
+          model: db.orderdetail
+      },{
+        model: db.users
+      }
+      ],
     });
     const pages = await db.orders.count();
     const totalPages = Math.ceil(pages/ limit);
