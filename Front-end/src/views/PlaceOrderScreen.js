@@ -64,12 +64,12 @@ export default function PlaceOrderScreen(props) {
           {/* <ul>
             <li> */}
           <div className="card card-body">
-            <h2>Shipping</h2>
+            <h2>Địa chỉ giao hàng</h2>
             <p>
-              <strong>Name:</strong> {cart.shippingAddress.fullName} <br />
+              <strong>Họ tên:</strong> {cart.shippingAddress.fullName} <br />
               <strong>Số điện thoại: </strong>{" "}
               {cart.shippingAddress.phoneNumber} <br />
-              <strong>Address: </strong> {cart.shippingAddress.address},{" "}
+              <strong>Địa chỉ: </strong> {cart.shippingAddress.address},{" "}
               {cart.shippingAddress.ward},{cart.shippingAddress.district},{" "}
               {cart.shippingAddress.city}
             </p>
@@ -77,15 +77,15 @@ export default function PlaceOrderScreen(props) {
           {/* </li>
             <li> */}
           <div className="card card-body">
-            <h2>Payment</h2>
+            <h2>Thanh toán</h2>
             <p>
-              <strong>Method:</strong> {cart.paymentMethod}
+              <strong>Phương thức thanh toán:</strong> {cart.paymentMethod}
             </p>
           </div>
           {/* </li>
             <li> */}
           <div className="card card-body">
-            <h2>Order Items</h2>
+            <h2>Sản phẩm</h2>
             {/* <ul> */}
             {cart.cartItems.map((item) => (
               <>
@@ -126,7 +126,7 @@ export default function PlaceOrderScreen(props) {
             <div className="row">
               {/* <ul>
               <li> */}
-              <h2>Order Summary</h2>
+              <h2>Chi tiết sản phẩm</h2>
               {/* </li>
               <li> */}
               <div className="col-md-8">
@@ -156,7 +156,7 @@ export default function PlaceOrderScreen(props) {
                   disabled={cart.cartItems.length === 0}
                   onClick={placeOrderHandler}
                 >
-                  Place Order
+                  Xác nhận đơn hàng
                 </button>
               </div>
 
