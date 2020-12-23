@@ -69,7 +69,7 @@ export default function ProfileScreen() {
                         <input
                             id="password"
                             type="password"
-                            placeholder="Enter password"
+                            placeholder="Nhập mật khẩu cũ"
                             onChange={(e) => setOldPassword(e.target.value)}
                         ></input>
                 </div>
@@ -78,7 +78,7 @@ export default function ProfileScreen() {
                         <input
                             id="newpassword"
                             type="password"
-                            placeholder="Enter password"
+                            placeholder="Nhập mật khẩu mới"
                             onChange={(e) => setNewPassword(e.target.value)}
                         ></input>
                 </div>
@@ -87,7 +87,7 @@ export default function ProfileScreen() {
                     <input
                         id="confirmPassword"
                         type="password"
-                        placeholder="Enter confirm password"
+                        placeholder="Xác nhận mật khẩu mới"
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     ></input>
                 </div>

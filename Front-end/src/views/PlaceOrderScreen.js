@@ -69,8 +69,8 @@ export default function PlaceOrderScreen(props) {
               <strong>Họ tên:</strong> {cart.shippingAddress.fullName} <br />
               <strong>Số điện thoại: </strong>{" "}
               {cart.shippingAddress.phoneNumber} <br />
-              <strong>Địa chỉ: </strong> {cart.shippingAddress.address},{" "}
-              {cart.shippingAddress.ward},{cart.shippingAddress.district},{" "}
+              <strong>Địa chỉ: </strong>{cart.shippingAddress.address},{" "}
+              {cart.shippingAddress.ward},{" "}{cart.shippingAddress.district},{" "}
               {cart.shippingAddress.city}
             </p>
           </div>
@@ -123,42 +123,42 @@ export default function PlaceOrderScreen(props) {
         </div>
         <div className="col-md-4">
           <div className="card card-body">
-            <div className="row">
+            <div className="Row">
               {/* <ul>
               <li> */}
               <h2>Chi tiết sản phẩm</h2>
               {/* </li>
               <li> */}
-              <div className="col-md-8">
-                <div className="row">
+              {/* <div className="col-md-8"> */}
+                <div className="Row">
                   <div><p>Tiền hàng: {converToPrice(cart.itemsPrice)}₫</p></div>
                 </div>
                 {/* </li>
               <li> */}
-                <div className="row">
+                <div className="Row">
                   <div><p>Phí vận chuyển: {converToPrice(cart.shippingPrice)}₫ </p></div>
                 </div>
                 {/* </li>
 
               <li> */}
-                <div className="row">
+                <div className="roww">
                   <div>
                     <strong>Tổng tiền hàng: {converToPrice(cart.totalPrice)}₫</strong>
                   </div>
                   {/* </li>
               <li> */}
                 </div>
-              </div>
-              <div className="col-md-4">
+              {/* </div> */}
+              {/* <div className="col-md-4"> */}
                 <button
                   type="button"
-                  className="btn btn-warning "
+                  className="btnn btn-warning "
                   disabled={cart.cartItems.length === 0}
                   onClick={placeOrderHandler}
                 >
-                  Xác nhận đơn hàng
+                  Xác nhận
                 </button>
-              </div>
+              {/* </div> */}
 
               {/* </li> */}
               {loading && <LoadingBox></LoadingBox>}
