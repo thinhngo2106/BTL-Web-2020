@@ -2,7 +2,8 @@ import React  from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/footer.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faFacebook,faTwitter, faInstagram, faYoutube  }from '@fortawesome/free-brands-svg-icons'
+import {faFacebook,faTwitter, faInstagram, faYoutube  }from '@fortawesome/free-brands-svg-icons';
+import {AiOutlineSend} from 'react-icons/ai'
 
 function Footer() {
       return (
@@ -48,7 +49,7 @@ function Footer() {
                     <p>Nhận tin từ chúng mình</p>
                     <form action="#" className="fn-form">
                       <input type="text" placeholder="Email" />
-                      <button type="submit"><FontAwesomeIcon icon="send"/></button>
+                      <AiOutlineSend id="icon_send"/>
                     </form>
                   </div>
                 </div>

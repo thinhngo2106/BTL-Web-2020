@@ -76,8 +76,8 @@
 	position: relative;
 }
 .footer-section .footer-text .ft-news .fn-form input {
-	width: 100%;
-	height: 50px;
+	width: 70%;
+	height: 40px;
 	border-radius: 2px;
 	background: #393D4A;
 	border: none;
@@ -101,4 +101,9 @@
 	padding: 3px;
 	padding-top: 6px ;
 	font-size: 35px;
+}
+#icon_send{
+	font-size: 40px;
+	border: none;
+	background-color: #cd9042; 
 }

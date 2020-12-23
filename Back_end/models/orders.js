@@ -4,8 +4,7 @@ const sequelize = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
     const orders = sequelize.define("orders", {
         idOrder:{
-            type: DataTypes.INTEGER(11),
-            autoIncrement: true,
+            type: DataTypes.STRING(),
             primaryKey: true,
         },
         customerName:{

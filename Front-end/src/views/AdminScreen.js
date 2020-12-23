@@ -55,7 +55,11 @@ export default function AdminScreen(){
                           beginAtZero: true
                       }
                   }]
-              }}}
+              },       title: {
+                display: true,
+                text: 'Biểu đồ thống kê sản phẩm'
+            }
+            }}
            />
         </div>
         )}
@@ -91,7 +95,11 @@ export default function AdminScreen(){
                           beginAtZero: true
                       }
                   }]
-              }}}
+              },
+              title: {
+                display: true,
+                text: 'Biểu đồ thống kê đơn hàng theo ngày'
+            }}}
            />
         </div>
         )} 

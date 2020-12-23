@@ -6,13 +6,26 @@ const {isAuth, isAdmin} = require('../utlis');
 const router = require("./searchRouters");
 const sequelize = require('sequelize');
 
+
+
+
 orderRouter.post(  '/',
     isAuth,
     expressAsyncHandler(async (req, res) => {
+      function makeid(length) {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+           result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+      }
       if (req.body.orderItems.length === 0) {
         res.status(400).send({ message: 'Cart is empty' });
       } else {
         const order = await db.orders.create({
+          idOrder: makeid(5),
           customerName: req.body.customerName,
           orderDate: req.body.orderDate,
           status: req.body.status,
