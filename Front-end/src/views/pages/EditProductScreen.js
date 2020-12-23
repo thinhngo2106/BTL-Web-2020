@@ -6,6 +6,7 @@ import LoadingBox from '../../components/LoadingBox';
 import MessageBox from '../../components/MessageBox';
 import { PRODUCT_UPDATE_RESET } from '../../constants/productConstants';
 import {listProductCategories, listProductBrands} from "../../actions/productActions";
+import '../css/EditProductScreen.css';
 
 
 export default function ProductEditScreen(props) {
@@ -109,10 +110,12 @@ export default function ProductEditScreen(props) {
 
 
   return (
-    <div>
-      <form className="form" onSubmit={submitHandler}>
+    <div className="edit-product" >
+      <form className=" form edit-form" onSubmit={submitHandler}>
         <div>
-          <h1>Chỉnh sửa sản phẩm{name}</h1>
+          <h1 style={{textAlign: 'center'}}>Chỉnh sửa sản phẩm <br/> <br/> </h1>
+          <h1>{name}</h1>
+          
         </div>
 
         {loadingUpdate && <LoadingBox></LoadingBox>}
@@ -125,7 +128,7 @@ export default function ProductEditScreen(props) {
           <>
           {
               image ? (
-                <img src={image} alt =""/>
+                <img className="edit-image" src={image} alt =""/>
               ) : (
                 <div></div>
               )
