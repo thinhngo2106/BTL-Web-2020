@@ -35,14 +35,14 @@ export default function NavBar(pros) {
                 <div className="item-big">
                  
                 <div className="dropdown">
-                <button type="button" class="navbar-button btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                <button type="button" className="navbar-button btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                 <FaIcons.FaBars  /> &nbsp;
-                  Danh mục sản phẩm
+                  Trang chủ
                   </button>
-                  <div class="dropdown-menu">
+                  <div className="dropdown-menu">
                       <button className="signout-button " >
                         <span className='dropdown-content'> zzz </span>
-                      </button>
+                  </button>
                   </div>
                </div>
                     <div>

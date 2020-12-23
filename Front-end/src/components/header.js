@@ -81,9 +81,16 @@ function Header(props) {
 
                       <Dropdown.Menu  className="dropdown-signout"> 
                         <Dropdown.Item style={{backgroundColor: 'white'}}> 
-                          <button className="signout-button "onClick={signoutHandler} >
+                          <button className="signout-button" onClick={signoutHandler} >
                             <span className='dropdown-content'> Đăng xuất </span>
-                            </button>
+                          </button>
+                        </Dropdown.Item>
+                        <Dropdown.Item style={{backgroundColor: 'white'}}>
+                          <Link to="/changepassword">
+                          <button>
+                              <span className='dropdown-content'> Đổi mật khẩu</span>
+                          </button>
+                          </Link>
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

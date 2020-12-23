@@ -28,6 +28,8 @@ import {
     userRegisterReducer, 
     userListReducer,
     userDeleteReducer,
+    userUpdateProfileReducer,
+    userDetailsReducer,
 } from './reducers/userReducers';
 
 import {
@@ -90,6 +92,8 @@ const reducer = combineReducers({
     brandUpdate: brandUpdateReducer,
     brandDetails: brandDetailsReducer,
     categoryDetails: categoryDetailsReducer,
+    userUpdateProfile: userUpdateProfileReducer,
+    userDetails: userDetailsReducer,
 });
 
 

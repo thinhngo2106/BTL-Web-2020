@@ -19,7 +19,7 @@ export default function CategoryScreen(props) {
     const page = param.get("page");
     const min = param.get("min");
     const max = param.get("max");
-    const limit = 2;
+    const limit = 10;
     const categorySearch  = useSelector((state) => state.categorySearch);
     const { loading, error, data, pages} = categorySearch;
     const dispatch = useDispatch();
@@ -58,12 +58,19 @@ export default function CategoryScreen(props) {
                     </div>
                 </div>
                 
-                <div className="home__row" >
+                <div>
                         {
                             data.length > 0 ? (
-                                data[0].products.map((product) => (
+                                data[0].products.length > 0 ? (
+                                    <div className="home__row" >
+                                    {data[0].products.map((product) => (
                                     <Product key={product.idProduct} product={product}> </Product>
-                                ))
+                                    
+                                ))}
+                                </div>
+                                ) : (
+                                    <MessageBox variant="danger"> "Không có sản phẩm theo yêu cầu"</MessageBox>
+                                )
                             ) : (
                                 <MessageBox variant="danger"> "Không có sản phẩm theo yêu cầu"</MessageBox>
                             )}
