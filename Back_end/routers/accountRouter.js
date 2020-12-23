@@ -1,7 +1,7 @@
 const express = require("express");
 const db = require('../models');
 const router = express.Router();
-const data = require('../dataimport');
+const data1 = require('../data1');
 const expressAsyncHandler =  require('express-async-handler');
 const bcrypt = require('bcryptjs');
 const {generateToken, isAuth, isAdmin} = require('../utlis');
@@ -13,6 +13,10 @@ const e = require("express");
 router.get("/users", (req,res)=>{
     db.users.findAll().then(users => res.send(users));
 });
+router.get("/import", expressAsyncHandler(async (req, res) => {
+  const create = await db.users.bulkCreate(data1.users);
+  res.send({create});
+}));
 router.get("/seed",userController.seed);
 
 router.post("/signin", userController.singin)
@@ -56,8 +60,17 @@ router.get(
     isAuth,
     isAdmin,
     expressAsyncHandler(async (req, res) => {
-      const users = await db.users.findAll();
-      res.send(users);
+      const limit =  10;
+      const search = req.query.search || '';
+      const page = req.query.page >= 0 ? req.query.page : 0;
+      const offset = page ? parseInt(page * limit) : 0;      
+      const users = await db.users.findAll({
+        offset: offset,
+        limit: limit,
+      });
+      const pages = await db.users.count();
+      const totalPages = Math.ceil(pages/ limit);
+      res.send({users, totalPages});
     })
   );
 

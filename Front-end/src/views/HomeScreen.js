@@ -20,7 +20,7 @@ export default function HomeScreen() {
   
     useEffect(() => {
         dispatch(listProducts());
-        dispatch(recommendProducts(4));
+        dispatch(recommendProducts(10));
     }, [dispatch]);
     return (
         <div>

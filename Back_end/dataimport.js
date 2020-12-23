@@ -165,6 +165,10 @@ const data = {
         {
             idCategory:3,
             categoryName:'Áo Converse',
+        },
+        {
+            idCategory:4,
+            categoryName:'Áo Vans',
         }
     ],
     productsizes:[

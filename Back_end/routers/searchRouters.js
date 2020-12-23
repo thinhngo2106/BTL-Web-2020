@@ -24,6 +24,7 @@ router.get('/', expressAsyncHandler(async( req,res) => {
         replacements: {
             name: term
         },
+
         offset: offset,
         limit: limit,
     });

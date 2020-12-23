@@ -31,7 +31,6 @@ function Header(props) {
   const submitAction = (e) =>{
     e.preventDefault();
     setQuery(query);
-
   }
   
 
@@ -44,11 +43,18 @@ function Header(props) {
 
               <div className="header__search"> 
                 <input className="header__searchInput" placeholder="Search.." name="term" type="text" value={query} onChange={(e) => setQuery(e.target.value)}/>
-                <Link to ={`/search?query=${query}`}>
-                  <button className="search-button" type="submit" onSubmit={submitAction}>
-                    <SearchIcon className="header__searchIcon" />
+                { query ? (
+                      <Link to ={`/search?query=${query}`}>
+                            <button className="search-button" type="submit" onSubmit={submitAction}>
+                            <SearchIcon className="header__searchIcon" />
+                            </button>
+                        </Link>
+                ) : (
+                  <button className="search-button" type="submit">
+                  <SearchIcon className="header__searchIcon"/>
                   </button>
-                </Link>
+                )
+              }
               </div>
 
               <div className="header__nav">
