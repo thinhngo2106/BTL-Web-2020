@@ -75,12 +75,6 @@ orderRouter.get(
     const page = req.query.page >= 0 ? req.query.page : 0;
     const offset = page ? parseInt(page * limit) : 0;
     const orders = await db.orders.findAll({
-      include:[{
-         model: db.orderdetail
-      },{
-         model: db.users
-       }
-      ],
       offset: offset,
       limit: limit,
       include:[{
