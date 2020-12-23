@@ -283,7 +283,9 @@ img.small {
   max-width: fit-content;
   width: 85%;
 }
-
+img.small1 {
+  width:55%
+}
 .column1 {
   width: 50px;
   /* padding-left: 40px; */
