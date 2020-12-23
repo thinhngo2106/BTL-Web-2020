@@ -53,7 +53,9 @@ const {
     BRAND_DETAILS_REQUEST,
     BRAND_DETAILS_SUCCESS,
     BRAND_DETAILS_FAIL,
-
+    PLT_PRODUCT_REQUEST,
+    PLT_PRODUCT_SUCCESS,
+    PLT_PRODUCT_FAIL,
   } = require('../constants/productConstants');
 
 export const productListReducer =  (
@@ -274,6 +276,20 @@ export const brandDetailsReducer = (state = { loading: true }, action) => {
     case BRAND_DETAILS_SUCCESS:
       return { loading: false, brand: action.payload };
     case BRAND_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const pltShowReducer = (state = { loading: true }, action) => {
+  switch (action.type) {
+    case PLT_PRODUCT_REQUEST:
+      return { loading: true };
+    case PLT_PRODUCT_SUCCESS:
+      return { loading: false, plt: action.payload };
+      
+    case PLT_PRODUCT_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

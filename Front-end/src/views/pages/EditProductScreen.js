@@ -42,14 +42,15 @@ export default function ProductEditScreen(props) {
       props.history.push('/products/productsManage');
     }
     
-    if (!product || successUpdate) {
+    if (!product || successUpdate || product.idProduct !== parseInt(productId)) {
         dispatch({ type: PRODUCT_UPDATE_RESET })
         dispatch(detailsProduct(productId));
         dispatch(listProductCategories());
         dispatch(listProductBrands());
         
-    } else {
-
+    } 
+    else {
+       
         setName(product.productName);
         setPrice(product.productPrice);
         setImage(product.productdetails[0].image);
