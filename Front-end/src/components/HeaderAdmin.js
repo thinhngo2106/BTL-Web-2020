@@ -76,26 +76,9 @@ function Header(props) {
                         </div> 
                       </Dropdown.Toggle>
 
-                      <Dropdown.Menu  className="dropdown-signout"> 
-
-                        <Dropdown.Item style={{backgroundColor: 'white'}}>
-                          <div>
-                          <button className="signout-button" onClick={changePasswordHandler}>
-                              <span className='dropdown-content'> Đổi mật khẩu</span>
-                          </button>
-                          </div>
-                        </Dropdown.Item>
-                        <Dropdown.Item style={{backgroundColor: 'white'}}>
-                        
-                          <button className="signout-button" onClick={updateProfileHandler}>
-                              <span className='dropdown-content'> Tài khoản</span>
-                          </button>
-                        
-                        </Dropdown.Item>
-                        <Dropdown.Item style={{backgroundColor: 'white'}}> 
-                          <button className="signout-button" onClick={signoutHandler} >
-                            <span className='dropdown-content'> Đăng xuất </span>
-                          </button>
+                      <Dropdown.Menu className="dropdown-signout" > 
+                        <Dropdown.Item onClick={signoutHandler}> 
+                                  Đăng xuất
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

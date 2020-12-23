@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/header.css';
-import { Link,useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SearchIcon from "@material-ui/icons/Search";
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import {useDispatch, useSelector} from 'react-redux';
@@ -14,7 +14,7 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 
 function Header(props) {
 
-  const history = useHistory()
+
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const [query, setQuery] = useState('');
@@ -32,12 +32,7 @@ function Header(props) {
     e.preventDefault();
     setQuery(query);
   }
-  const changePasswordHandler = () => {
-    history.push("/changepassword");
-  }
-  const updateProfileHandler = () =>{
-    history.push("/profile");
-  }
+  
 
 
         return(
@@ -64,7 +59,7 @@ function Header(props) {
 
               <div className="header__nav">
                 <Link to = "/orderhistory" style={{textDecoration: 'none'}}>
-                <button className="check-order">
+                <button className="btn btn-warning abcd">
                   <div className="header__option">
                    
                     <span className="header__optionLineOne">Kiểm tra</span>
@@ -81,35 +76,28 @@ function Header(props) {
                   <div>
                     <Dropdown className="dropdown">
                       
-                      <Dropdown.Toggle className="dropdown-basic" style={{backgroundColor: 'rgba(244,203,36,09)'}}>
+                      <Dropdown.Toggle id="dropdown-basic" variant="warning" >
                       
-                        <div className="header__option">
-                          <span className="header__optionLineOne">Xin chào</span>
+                        <div className="header__option great">
+                          <span className="header__optionLineOne">Xin chào!!!</span>
 
                           <span className="header__optionLineTwo">{userInfo.Fname} {userInfo.Lname}</span>     
                         </div> 
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu  className="dropdown-signout"> 
-
-                        <Dropdown.Item style={{backgroundColor: 'white'}}>
-                          <div>
-                          <button className="signout-button" onClick={changePasswordHandler}>
-                              <span className='dropdown-content'> Đổi mật khẩu</span>
-                          </button>
-                          </div>
-                        </Dropdown.Item>
-                        <Dropdown.Item style={{backgroundColor: 'white'}}>
-                        
-                          <button className="signout-button" onClick={updateProfileHandler}>
-                              <span className='dropdown-content'> Tài khoản</span>
-                          </button>
-                        
-                        </Dropdown.Item>
                         <Dropdown.Item style={{backgroundColor: 'white'}}> 
                           <button className="signout-button" onClick={signoutHandler} >
                             <span className='dropdown-content'> Đăng xuất </span>
                           </button>
+                        </Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item style={{backgroundColor: 'white'}}>
+                          <Link to="/changepassword">
+                         
+                              <span className='dropdown-content'> Đổi mật khẩu</span>
+                          
+                          </Link>
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
@@ -118,10 +106,10 @@ function Header(props) {
 
                   ) : (
                     
-                  <button className="signin-button">
+                  <button className="btn btn-warning abcd">
                        <Link to ="/signin" style={{textDecoration: 'none'}}>
                     <div className="header__option">
-                      <span className="header__optionLineOne">Xin chào</span>
+                      <span className="header__optionLineOne">Xin chào !!!</span>
                       <span className="header__optionLineTwo">Đăng nhập</span>     
                     </div>                 
                   </Link>
@@ -132,7 +120,7 @@ function Header(props) {
                 }
                 </div>
                 <Link to="/cart" style={{textDecoration: 'none'}}>
-                <div className="header__optionBasket">
+                <div className="header__optionBasket great1">
                 <AddShoppingCartIcon/>
                 <span className="header__optionLineTwo header__basketCount">{cartItems.length}</span>
                 </div>
