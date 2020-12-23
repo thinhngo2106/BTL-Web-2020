@@ -29,12 +29,12 @@ export default function Product(props) {
             <Link to={`/product/${product.idProduct}`} style={{textDecoration: 'none'}}>
               <p style={{color: 'black'}}>{product.productName}</p>
             </Link>   
-
+            </div>
             <div className="product__price">$
               <strong> {numberWithCommas(product.productPrice)} ₫</strong>
             </div>
             
-            </div>
+
               <Link to={`/product/${product.idProduct}`} className="link">
                 <button className="details" >Chi tiết</button>
               </Link>
