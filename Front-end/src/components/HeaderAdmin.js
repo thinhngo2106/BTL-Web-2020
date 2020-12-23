@@ -47,19 +47,6 @@ function Header(props) {
               </Link>
             </div>
                 <div className="header__nav">
-                  <Link to = "/orderhistory" style={{textDecoration: 'none'}}>
-                  <>
-                    <button  className="btn btn-warning btn-lg abcd">
-                      <div className="header__option">
-                        <span className="header__optionLineOne">Kiểm tra</span>
-                        <span className="header__optionLineOne">Đơn hàng</span>
-                        
-                      
-                      </div>
-                    </button>
-                  </>
-                  </Link>
-
                 <div className="header__option">
                 {
                   userInfo ? (
@@ -76,9 +63,25 @@ function Header(props) {
                         </div> 
                       </Dropdown.Toggle>
 
-                      <Dropdown.Menu className="dropdown-signout" > 
-                        <Dropdown.Item onClick={signoutHandler}> 
-                                  Đăng xuất
+                      <Dropdown.Menu className="dropdown-signout" >
+                         <Dropdown.Item style={{backgroundColor: 'white'}}>
+                            <div>
+                            <button className="signout-button" onClick={changePasswordHandler}>
+                                <span className='dropdown-content'> Đổi mật khẩu</span>
+                            </button>
+                            </div>
+                          </Dropdown.Item>
+                          <Dropdown.Item style={{backgroundColor: 'white'}}>
+
+                            <button className="signout-button" onClick={updateProfileHandler}>
+                                <span className='dropdown-content'> Tài khoản</span>
+                            </button>
+
+                          </Dropdown.Item>
+                          <Dropdown.Item style={{backgroundColor: 'white'}}> 
+                            <button className="signout-button" onClick={signoutHandler} >
+                              <span className='dropdown-content'> Đăng xuất </span>
+                            </button>
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

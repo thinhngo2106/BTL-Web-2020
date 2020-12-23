@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/header.css';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import SearchIcon from "@material-ui/icons/Search";
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import {useDispatch, useSelector} from 'react-redux';
@@ -14,7 +14,7 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 
 function Header(props) {
 
-
+  const history = useHistory()
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const [query, setQuery] = useState('');
@@ -32,7 +32,12 @@ function Header(props) {
     e.preventDefault();
     setQuery(query);
   }
-  
+  const changePasswordHandler = () => {
+    history.push("/changepassword");
+  }
+  const updateProfileHandler = () =>{
+    history.push("/profile");
+  }
 
 
         return(
@@ -86,19 +91,27 @@ function Header(props) {
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu  className="dropdown-signout"> 
+
+                      <Dropdown.Item style={{backgroundColor: 'white'}}>
+                          <div>
+                          <button className="signout-button" onClick={changePasswordHandler}>
+                              <span className='dropdown-content'> Đổi mật khẩu</span>
+                          </button>
+                          </div>
+                        </Dropdown.Item>
+                        <Dropdown.Item style={{backgroundColor: 'white'}}>
+                        
+                          <button className="signout-button" onClick={updateProfileHandler}>
+                              <span className='dropdown-content'> Tài khoản</span>
+                          </button>
+                        
+                        </Dropdown.Item>
                         <Dropdown.Item style={{backgroundColor: 'white'}}> 
                           <button className="signout-button" onClick={signoutHandler} >
                             <span className='dropdown-content'> Đăng xuất </span>
                           </button>
                         </Dropdown.Item>
                         <Dropdown.Divider />
-                        <Dropdown.Item style={{backgroundColor: 'white'}}>
-                          <Link to="/changepassword">
-                         
-                              <span className='dropdown-content'> Đổi mật khẩu</span>
-                          
-                          </Link>
-                        </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                   </div>
