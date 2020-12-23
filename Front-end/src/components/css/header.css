@@ -1,3 +1,7 @@
+*:focus {
+  
+}
+
 .header {
   height: 100px;
   display: flex;
@@ -86,6 +90,12 @@
   text-decoration: none; 
 }
 
+.header__option:focus {
+  outline: none !important;
+  outline-offset: none !important;
+  border: 0 !important;
+}
+
 .search-button{
   border: none;
   margin: 0px;
@@ -120,8 +130,13 @@
 }
 
 .dropdown-basic:focus {
+  outline: none !important;
+  outline-offset: none !important;
+  border: 0 !important;
+}
+
+.check-order:focus {
   outline: none;
-  border: rgba(244,203,36,09);
 }
 
 .dropdown-signout{
