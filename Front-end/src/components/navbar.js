@@ -36,12 +36,12 @@ export default function NavBar(pros) {
                  
                 <div className=" nav-dropdown">
                 {/* <button type="button" className="navbar-button btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  */}
-                <button className="navbar-button">
+                
+                  <Link to="/">
+                  <button className="navbar-button">
                 <FaIcons.FaBars  /> &nbsp;
                   Trang chủ
                   </button>
-                  <Link to="/">
-
                   </Link>
                   {/* <div className="dropdown-menu">
                      
