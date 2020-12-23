@@ -63,7 +63,7 @@ export const BrandsManage = (props) => {
                             props.history.push(`${brand.idBrand}/edit`)
                           }
                           >
-                          Edit
+                          Chỉnh sửa
                         </button>
                       <button
                         type="button"
@@ -119,7 +119,7 @@ export const AddBrands = (props) => {
               <input
                 id="name"
                 type="text"
-                placeholder="Enter name"
+                placeholder="Nhập tên nhãn hàng"
                 value={nameBrand}
                 onChange={(e) => setNameBrand(e.target.value)}
               ></input>
@@ -128,7 +128,7 @@ export const AddBrands = (props) => {
         <div>
           <label></label>
           <button className="primary" type="submit">
-            Thêm
+            Cập nhật
           </button>
       </div>
 
@@ -183,11 +183,11 @@ export const EditBrandScreen = (props) => {
           <h1>Chỉnh sửa nhãn hàng {name}</h1>
         </div>
         <div>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Tên nhãn hàng</label>
               <input
                 id="name"
                 type="text"
-                placeholder="Enter name"
+                placeholder="Nhập tên nhãn hàng"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></input>

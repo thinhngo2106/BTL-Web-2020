@@ -66,7 +66,7 @@ export const ProductsTypeManage = (props) => {
                           props.history.push(`${category.idCategory}/edit`)
                         }
                         >
-                        Edit
+                        Chỉnh sửa
                         </button>
                         <button
                           type="button"
@@ -116,13 +116,13 @@ export const AddProductsType = (props) => {
   return (
     <div className='AddProductsType'>
        <form className="form a list" onSubmit={submitHandler}>  
-      <div><h1>Add Products Type</h1></div>
+      <div><h1>Thêm loại sản phẩm</h1></div>
       <div>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Tên loại sản phẩm</label>
               <input
                 id="name"
                 type="text"
-                placeholder="Enter name"
+                placeholder="Nhập tên loại sản phẩm"
                 value={nameCategory}
                 onChange={(e) => setNameCategory(e.target.value)}
               ></input>
@@ -131,7 +131,7 @@ export const AddProductsType = (props) => {
         <div>
           <label></label>
           <button className="primary" type="submit">
-           Add
+           Cập nhật
           </button>
       </div>
 

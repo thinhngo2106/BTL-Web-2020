@@ -112,7 +112,7 @@ export default function ProductEditScreen(props) {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Edit Product {name}</h1>
+          <h1>Chỉnh sửa sản phẩm{name}</h1>
         </div>
 
         {loadingUpdate && <LoadingBox></LoadingBox>}
@@ -131,37 +131,37 @@ export default function ProductEditScreen(props) {
               )
             }
             <div>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Tên sản phẩm</label>
               <input
                 id="name"
                 type="text"
-                placeholder="Enter name"
+                placeholder="Nhập tên sản phẩm"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></input>
             </div>
             <div>
-              <label htmlFor="price">Price</label>
+              <label htmlFor="price">Giá tiền</label>
               <input
                 id="price"
                 type="text"
-                placeholder="Enter price"
+                placeholder="Nhập giá tiền"
                 value={price}
                 onChange={(e) => setPrice(parseInt(e.target.value))}
               ></input>
             </div>
             <div>
-              <label htmlFor="image">Image</label>
+              <label htmlFor="image">Hình ảnh</label>
               <input
                 id="image"
                 type="text"
-                placeholder="Enter image"
+                placeholder=""
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></input>
             </div>
             <div>
-              <label htmlFor="imageFile">Image File</label>
+              <label htmlFor="imageFile">File ảnh</label>
               <input
                 type="file"
                 id="imageFile"
@@ -174,12 +174,12 @@ export default function ProductEditScreen(props) {
               )}
             </div>
             <div>
-              <label htmlFor="category">Category</label>
+              <label htmlFor="category">Danh mục</label>
               <select className="categories-list" 
                       value={category}  
                       onChange={(e) => setCategory(e.target.value)}
               >
-               <option value=""  disabled hidden>Choose here</option>
+               <option value=""  disabled hidden>Chọn</option>
               { categories ? (
               categories.map((category) => (
                  <option className= "category-select" key ={category.idCategory} value={category.idCategory}>
@@ -194,12 +194,12 @@ export default function ProductEditScreen(props) {
               {errorCategory && <MessageBox variant="danger">{errorCategory}</MessageBox>} 
             </div>
           <div>
-              <label htmlFor="brand">Brand</label>
+              <label htmlFor="brand">Nhãn hàng</label>
               <select className="categories-list" 
                       value={brand}  
                       onChange={(e) => setBrand(e.target.value)}
               >
-              <option value=""  disabled hidden>Choose here</option>
+              <option value=""  disabled hidden>Chọn</option>
               { brands ? (
               brands.map((x) => (
                  <option  className= "category-select" key ={x.idBrand} value={x.idBrand}>
@@ -246,7 +246,7 @@ export default function ProductEditScreen(props) {
             <div>
               <label></label>
               <button className="primary" type="submit">
-                Update
+                Cập nhật
               </button>
             </div>
           </>
