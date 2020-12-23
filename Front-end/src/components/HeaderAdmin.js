@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/header.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory  } from 'react-router-dom';
 import SearchIcon from "@material-ui/icons/Search";
 import {useDispatch, useSelector} from 'react-redux';
 import { signout } from '../actions/userActions';
@@ -9,7 +9,7 @@ import { Dropdown } from 'react-bootstrap';
 
 
 function Header(props) {
-
+  const history = useHistory()
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const [query, setQuery] = useState('');
@@ -24,6 +24,12 @@ function Header(props) {
     e.preventDefault();
     setQuery(query);
 
+  }
+  const changePasswordHandler = () => {
+    history.push("/changepassword");
+  }
+  const updateProfileHandler = () =>{
+    history.push("/profile");
   }
   
         return(
@@ -59,20 +65,37 @@ function Header(props) {
                   userInfo ? (
                   <>
                   <div>
-                    <Dropdown className="dropdown">
+                  <Dropdown className="dropdown">
                       
-                      <Dropdown.Toggle id="dropdown-basic" variant="warning">
+                      <Dropdown.Toggle className="dropdown-basic" style={{backgroundColor: 'rgba(244,203,36,09)'}}>
                       
                         <div className="header__option">
-                          <span className="header__optionLineOne">Xin chào!</span>
+                          <span className="header__optionLineOne">Xin chào</span>
 
                           <span className="header__optionLineTwo">{userInfo.Fname} {userInfo.Lname}</span>     
                         </div> 
                       </Dropdown.Toggle>
 
-                      <Dropdown.Menu className="dropdown-signout1" > 
-                        <Dropdown.Item onClick={signoutHandler}> 
-                                  Đăng xuất
+                      <Dropdown.Menu  className="dropdown-signout"> 
+
+                        <Dropdown.Item style={{backgroundColor: 'white'}}>
+                          <div>
+                          <button className="signout-button" onClick={changePasswordHandler}>
+                              <span className='dropdown-content'> Đổi mật khẩu</span>
+                          </button>
+                          </div>
+                        </Dropdown.Item>
+                        <Dropdown.Item style={{backgroundColor: 'white'}}>
+                        
+                          <button className="signout-button" onClick={updateProfileHandler}>
+                              <span className='dropdown-content'> Tài khoản</span>
+                          </button>
+                        
+                        </Dropdown.Item>
+                        <Dropdown.Item style={{backgroundColor: 'white'}}> 
+                          <button className="signout-button" onClick={signoutHandler} >
+                            <span className='dropdown-content'> Đăng xuất </span>
+                          </button>
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
