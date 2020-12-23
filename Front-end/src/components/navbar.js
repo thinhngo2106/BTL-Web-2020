@@ -34,16 +34,18 @@ export default function NavBar(pros) {
             <div className= "navbarItems">
                 <div className="item-big">
                  
-                <div className="dropdown">
-                <button type="button" className="navbar-button btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                <div className=" nav-dropdown">
+                {/* <button type="button" className="navbar-button btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  */}
+                
+                  <Link to="/">
+                  <button className="navbar-button">
                 <FaIcons.FaBars  /> &nbsp;
                   Trang chủ
                   </button>
-                  <div className="dropdown-menu">
-                      <button className="signout-button " >
-                        <span className='dropdown-content'> zzz </span>
-                  </button>
-                  </div>
+                  </Link>
+                  {/* <div className="dropdown-menu">
+                     
+                  </div> */}
                </div>
                     <div>
                     {categories.map((category) => (

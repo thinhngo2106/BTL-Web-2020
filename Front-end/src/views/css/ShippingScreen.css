@@ -45,3 +45,24 @@
 .payment-method > div > div {
     font-size: 20px;
 }
+
+.small1 {
+    float: left;
+    width: 60%; 
+
+}
+
+.Row {
+    position: relative;
+    margin-left: 5px;
+}
+
+.btnn {
+    font-weight: bold;
+    margin-top: 1.5vw;
+    width: 7vw;
+    margin-right: 2vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

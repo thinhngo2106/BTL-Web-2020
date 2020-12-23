@@ -35,6 +35,7 @@ export const BrandsManage = (props) => {
 
   return (
     <div className='ProductsType'>
+      <h1>Quản lý nhãn hàng</h1>
         { loadingBrand ? (
           <LoadingBox></LoadingBox>
         ): errorBrand ? (
@@ -46,7 +47,7 @@ export const BrandsManage = (props) => {
                 <tr>
                   <th>ID</th>
                   <th>Nhãn hàng</th>
-                  <th>Tùy chỉnh</th>
+                  <th>Thao tác</th>
                 </tr>
               </thead>
               <tbody>
