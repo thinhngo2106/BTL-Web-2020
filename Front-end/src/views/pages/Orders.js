@@ -58,7 +58,7 @@ export const OrdersManage = (props) => {
   }
   return (
     <div className="order-admin-list">
-      <h1>Orders</h1>
+      <h1>Quản lý đơn hàng</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
       {loading ? (

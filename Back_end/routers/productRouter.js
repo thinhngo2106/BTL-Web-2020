@@ -275,9 +275,6 @@ router.get("/test",
     router.get("/import",
     expressAsyncHandler(async (req, res) => {
         const array = data1.products;
-        const array1 = array.map((product) => ({
-            ...product
-        }))
         await array.forEach(async(product) => {
             await db.products.create({
                 idProduct: product.idProduct,
@@ -288,7 +285,7 @@ router.get("/test",
                 idCategory: product.idCategory,
             })
             if (product.idCategory == 1 || product.idCategory == 2) {
-            await  data.sizeShoes.forEach(async(size) => {
+            data.sizeShoes.forEach(async(size) => {
                    await db.productsizes.create({
                       idProduct:  product.idProduct,
                       idSize: size.idSize,
@@ -298,22 +295,24 @@ router.get("/test",
                })
             }
             else {
-            await data.sizeShirt.forEach(async(size) => {
+            data.sizeShirt.forEach(async(size) => {
                     await db.productsizes.create({
                        idProduct:  product.idProduct,
                        idSize: size.idSize,
                        quantityInStock: size.quantityInStock,
                        productSize: size.productSize,
-                    })
+                    })  
                 })
             }
         }
         )
-        await db.productdetail.bulkCreate(data1.productdetail);
         res.send("Thành công"); 
     }
 ));    
-
+router.get("/importimage", expressAsyncHandler(async (req, res) => {
+    await db.productdetail.bulkCreate(data1.productdetail);
+    res.send("Thành công"); 
+ }));
 
 router.get('/', productController.products);
 router.get("/seed", productController.postProducts);    

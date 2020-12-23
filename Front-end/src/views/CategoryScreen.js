@@ -38,10 +38,11 @@ export default function CategoryScreen(props) {
             { loading ? (
                 <LoadingBox></LoadingBox>
             ): error ? (
+
                 <MessageBox variant="danger"> {error}</MessageBox>
             ) : ( 
             <div className="home">    
-                <div className="home__container">
+                <div className="category__container">
                     <div className="price-filter-container ">
                         <ul className="price-filter">
                             {prices.map((price) => (
@@ -56,9 +57,7 @@ export default function CategoryScreen(props) {
                             ))}
                         </ul>
                     </div>
-                </div>
-                
-                <div>
+                    <div>
                         {
                             data.length > 0 ? (
                                 data[0].products.length > 0 ? (
@@ -69,13 +68,16 @@ export default function CategoryScreen(props) {
                                 ))}
                                 </div>
                                 ) : (
+                                    <div className="error-box">
                                     <MessageBox variant="danger"> "Không có sản phẩm theo yêu cầu"</MessageBox>
+                                    </div>
                                 )
                             ) : (
                                 <MessageBox variant="danger"> "Không có sản phẩm theo yêu cầu"</MessageBox>
                             )}
 
                     
+                </div>
                 </div>
             </div>
             

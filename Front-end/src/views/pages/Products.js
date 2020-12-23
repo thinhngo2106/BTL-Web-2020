@@ -81,17 +81,17 @@ export const ProductsManage = (props) => {
           <MessageBox variant="danger"> {error}</MessageBox>
         ) : (           
       <>
-        <h1> Products Manage</h1>
+        <h1>Quản lý sản phẩm</h1>
         <table className="table">
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Image</th>
-                <th>NAME</th>
-                <th>PRICE</th>
-                <th>CATEGORY</th>
-                <th>BRAND</th>
-                <th>ACTIONS</th>
+                <th>Hình ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá tiền</th>
+                <th>Danh mục</th>
+                <th>Nhãn hàng</th>
+                <th>Thao tác</th>
               </tr>
             </thead>
             <tbody>
@@ -111,14 +111,14 @@ export const ProductsManage = (props) => {
                         props.history.push(`/${product.idProduct}/edit`)
                       }
                     >
-                      Edit
+                      Chỉnh sửa
                     </button>
                     <button
                       type="button"
                       className="small"
                       onClick={() => deleteHandler(product)}
                     >
-                      Delete
+                      Xóa
                     </button>
                   </td>
                 </tr>
@@ -228,34 +228,34 @@ export const AddProducts = (props) => {
   return (
     <div className='admin-products addproduct'>
       <form className="form a list" onSubmit={submitHandler}> 
-        <div><h1>ADD Product</h1></div>
+        <div><h1>Thêm sản phẩm</h1></div>
         <div>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Tên sản phẩm</label>
               <input
                 id="name"
                 type="text"
-                placeholder="Enter name"
+                placeholder="Nhập tên sản phẩm"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></input>
         </div>      
         <div>
-              <label htmlFor="price">Price</label>
+              <label htmlFor="price">Giá tiền</label>
               <input
                 id="price"
                 type="text"
-                placeholder="Enter price"
+                placeholder="Nhập giá tiền"
                 value={price}
                 onChange={(e) => setPrice(parseInt(e.target.value))}
               ></input>
         </div>  
         <div>
-              <label htmlFor="category">Category</label>
+              <label htmlFor="category">Danh mục</label>
               <select className="categories-list" 
                       value={category}  
                       onChange={(e) => setCategory(e.target.value)}
               >
-              <option value="" disabled hidden>Choose here</option>
+              <option value="" disabled hidden>Chọn</option>
               { categories ? (
               categories.map((category) => (
                  <option className= "category-select" key ={category.idCategory} value={category.idCategory}>
@@ -270,12 +270,12 @@ export const AddProducts = (props) => {
               {errorCategory && <MessageBox variant="danger">{errorCategory}</MessageBox>} 
             </div>
           <div>
-              <label htmlFor="brand">Brand</label>
+              <label htmlFor="brand">Nhãn hàng</label>
               <select className="categories-list" 
                       value={brand}  
                       onChange={(e) => setBrand(e.target.value)}
               >
-              <option value=""  disabled hidden>Choose here</option>
+              <option value=""  disabled hidden>Chọn</option>
               { brands ? (
               brands.map((brand) => (
                  <option  className= "category-select" key ={brand.idBrand} value={brand.idBrand}>
@@ -290,7 +290,7 @@ export const AddProducts = (props) => {
               {errorBrand && <MessageBox variant="danger">{errorBrand}</MessageBox>} 
           </div>
       <div>
-          <label htmlFor="imageFile">Image</label>
+          <label htmlFor="imageFile">Ảnh</label>
           {
               image ? (
                 <div>
@@ -303,7 +303,7 @@ export const AddProducts = (props) => {
               <input
                 type="file"
                 id="imageFile"
-                label="Choose Image"
+                label="Chọn ảnh"
                 onChange={uploadFileHandler}
               ></input>
               {loadingUpload && <LoadingBox></LoadingBox>}
@@ -314,7 +314,7 @@ export const AddProducts = (props) => {
       <div>
         <label></label>
         <button className="primary" type="submit">
-        Add
+                Cập nhật
         </button>
       </div>
     </form>

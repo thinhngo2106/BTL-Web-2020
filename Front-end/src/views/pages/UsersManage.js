@@ -30,7 +30,7 @@ function UsersManage(props) {
     });
   }, [dispatch, successDelete, page]);
 
-  
+
   const deleteHandler = (user) => {
     if (window.confirm('Are you sure?')) {
       dispatch(deleteUser(user.idUser));
