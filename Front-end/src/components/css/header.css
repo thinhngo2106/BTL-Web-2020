@@ -96,30 +96,33 @@
   
 }
 
-.dropdown{
+
+/* .dropdown{
   display: inline-block;
   position: relative;
-}
+} */
 
 .dropdown-content {
+  text-align: center;
   font-size: 15px;
   color: rgb(0, 88, 0); 
 }
 
-.dropdown-basic {
+.check-order, .dropdown-basic, .signin-button {
   display: inline-block;
   position: relative;
   background-color: rgba(244,203,36,09);
   border: rgba(244,203,36,09);
 }
 
-.dropdown-basic:hover {
+.check-order:hover, .dropdown-basic:hover, .signin-button:hover {
   background-color: rgba(244,203,36,09);
 }
 
-/* .dropdown-basic:focus {
-  outline: white;
-} */
+.dropdown-basic:focus {
+  outline: none;
+  border: rgba(244,203,36,09);
+}
 
 .dropdown-signout{
   font-size: 18px;
@@ -134,6 +137,7 @@
   border: none;
   text-decoration: none;
   background-color: #fff;
+  
 }
 
 .signout-button:focus {

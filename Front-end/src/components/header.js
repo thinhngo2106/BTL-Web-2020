@@ -7,6 +7,8 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import {useDispatch, useSelector} from 'react-redux';
 import { signout } from '../actions/userActions';
 import { Dropdown } from 'react-bootstrap';
+import 'bootstrap/dist/js/bootstrap.bundle';
+
 
 
 
@@ -51,10 +53,15 @@ function Header(props) {
 
               <div className="header__nav">
                 <Link to = "/orderhistory" style={{textDecoration: 'none'}}>
+                <button className="check-order">
                   <div className="header__option">
+                   
                     <span className="header__optionLineOne">Kiểm tra</span>
                     <span className="header__optionLineTwo">Đơn hàng</span>
+                    
+                  
                   </div>
+                  </button>
                 </Link>
 
                 <div className="header__option">
@@ -82,14 +89,18 @@ function Header(props) {
                     </Dropdown>
                   </div>
 
+
                   ) : (
-               
-                  <Link to ="/signin" style={{textDecoration: 'none'}}>
+                    
+                  <button className="signin-button">
+                       <Link to ="/signin" style={{textDecoration: 'none'}}>
                     <div className="header__option">
                       <span className="header__optionLineOne">Xin chào</span>
                       <span className="header__optionLineTwo">Đăng nhập</span>     
                     </div>                 
                   </Link>
+                  </button>
+                 
                 
                   )
                 }
