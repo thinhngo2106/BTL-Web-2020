@@ -44,6 +44,9 @@ import {
         BRAND_DETAILS_REQUEST,
         BRAND_DETAILS_SUCCESS,
         BRAND_DETAILS_FAIL,
+        PLT_PRODUCT_REQUEST,
+        PLT_PRODUCT_SUCCESS,
+        PLT_PRODUCT_FAIL,
     } from "../constants/productConstants";
 import Axios from "axios";
 
@@ -332,7 +335,6 @@ export const detailsBrand = (brandId) => async (dispatch, getState) => {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: BRAND_DETAILS_SUCCESS, payload: data });
-    console.log(data);
   } catch (error) {
     dispatch({
       type: BRAND_DETAILS_FAIL,
@@ -343,3 +345,21 @@ export const detailsBrand = (brandId) => async (dispatch, getState) => {
     });
   }
 };
+
+
+export const showPlt= () => async (dispatch, getState) => {
+  dispatch({
+    type: PLT_PRODUCT_REQUEST,
+  });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = await Axios.get(`/api/products/plt`,  {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
+    dispatch({ type: PLT_PRODUCT_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: PLT_PRODUCT_FAIL, payload: error.message });
+  }
+};  

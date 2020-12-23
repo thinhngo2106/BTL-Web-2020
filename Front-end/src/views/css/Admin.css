@@ -33,3 +33,11 @@
   display: flex;
   width: 20%;
 }
+
+.content{
+  display: flex;
+  flex-direction: row;
+}
+.chart{
+  margin-left: 20px;
+}

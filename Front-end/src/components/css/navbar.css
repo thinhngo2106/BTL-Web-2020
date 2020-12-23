@@ -45,6 +45,12 @@ li {
     text-decoration: none;
 } */
 
+.nav-dropdown:focus {
+    outline: none !important;
+    outline-offset: none !important;
+    border: 0;
+}
+
 .navbar-button {
     cursor: pointer;
     font-size: 17px;
@@ -59,5 +65,7 @@ li {
     color: rgb(10, 10, 10)
 }
 .navbar-button:focus {
-    outline: none;
+    outline: none !important;
+    outline-offset: none !important;
+    border: 0;
 }

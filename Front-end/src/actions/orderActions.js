@@ -20,7 +20,9 @@ import {
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
   ORDER_DETAILS_FAIL,
-
+  PLT_ORDER_REQUEST,
+  PLT_ORDER_SUCCESS,
+  PLT_ORDER_FAIL,
 } from '../constants/orderConstants';
 
 export const createOrder = (order) => async (dispatch, getState) => {
@@ -58,7 +60,6 @@ export const listOrderMine = () => async (dispatch, getState) => {
             Authorization: `Bearer ${userInfo.token}`,
           },
         });
-        console.log(data);
         dispatch({ type: ORDER_MINE_LIST_SUCCESS, payload: data });
       } catch (error) {
         const message =
@@ -161,3 +162,23 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
     dispatch({ type: ORDER_DETAILS_FAIL, payload: message });
   }
 };
+
+
+
+export const showPltOrder= () => async (dispatch, getState) => {
+  dispatch({
+    type: PLT_ORDER_REQUEST,
+  });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = await Axios.get(`/api/orders/plt`,  {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
+    console.log(data);
+    dispatch({ type: PLT_ORDER_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: PLT_ORDER_FAIL, payload: error.message });
+  }
+};  
