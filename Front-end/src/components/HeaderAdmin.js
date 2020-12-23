@@ -42,42 +42,42 @@ function Header(props) {
             </div>
                 <div className="header__nav">
                   <Link to = "/orderhistory" style={{textDecoration: 'none'}}>
-                  <button className="check-order">
-                    <div className="header__option">
-                    
-                      <span className="header__optionLineOne">Kiểm tra</span>
-                      <span className="header__optionLineTwo">Đơn hàng</span>
+                  <>
+                    <button  className="btn btn-warning btn-lg abcd">
+                      <div className="header__option">
+                        <span className="header__optionLineOne">Kiểm tra</span>
+                        <span className="header__optionLineOne">Đơn hàng</span>
+                        
                       
-                    
-                    </div>
+                      </div>
                     </button>
+                  </>
                   </Link>
 
                 <div className="header__option">
                 {
                   userInfo ? (
+                  <>
                   <div>
                     <Dropdown className="dropdown">
                       
-                      <Dropdown.Toggle className="dropdown-basic" style={{backgroundColor: 'rgba(244,203,36,09)'}}>
+                      <Dropdown.Toggle id="dropdown-basic" variant="warning">
                       
                         <div className="header__option">
-                          <span className="header__optionLineOne">Xin chào</span>
+                          <span className="header__optionLineOne">Xin chào!</span>
 
                           <span className="header__optionLineTwo">{userInfo.Fname} {userInfo.Lname}</span>     
                         </div> 
                       </Dropdown.Toggle>
 
-                      <Dropdown.Menu  className="dropdown-signout"> 
-                        <Dropdown.Item style={{backgroundColor: 'white'}}> 
-                          <button className="signout-button "onClick={signoutHandler} >
-                            <span className='dropdown-content'> Đăng xuất </span>
-                            </button>
+                      <Dropdown.Menu className="dropdown-signout1" > 
+                        <Dropdown.Item onClick={signoutHandler}> 
+                                  Đăng xuất
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                   </div>
-
+                  </>
 
                   ) : (
                     

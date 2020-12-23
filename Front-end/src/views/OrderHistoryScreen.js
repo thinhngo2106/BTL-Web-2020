@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listOrderMine } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import "./css/OrderHistory.css"
 
 export default function OrderHistoryScreen(props) {
   const userSignin = useSelector((state) => state.userSignin);
@@ -34,7 +35,7 @@ export default function OrderHistoryScreen(props) {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <table className="table">
-          <thead>
+          <thead className="h">
             <tr>
               <th>Mã đơn hàng</th>
               <th>Người đặt hàng</th>
