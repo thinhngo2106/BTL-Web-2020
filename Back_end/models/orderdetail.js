@@ -4,7 +4,7 @@ const sequelize = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
     const orderdetail = sequelize.define("orderdetail", {
         idOrder:{
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.STRING,
             primaryKey: true,
             allowNull: false,
         },
