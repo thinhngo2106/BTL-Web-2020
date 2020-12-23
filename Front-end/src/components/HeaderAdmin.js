@@ -40,33 +40,23 @@ function Header(props) {
                 </button>
               </Link>
             </div>
-
-            <div className="header__nav">
-                <Link to = "/orderhistory">
-                  <div className="header__option">
-                    <span className="header__optionLineOne">Kiểm tra</span>
-                    <span className="header__optionLineTwo">Đơn hàng</span>
-                  </div>
-                </Link>
+                <div className="header__nav">
+                  <Link to = "/orderhistory" style={{textDecoration: 'none'}}>
+                  <button className="check-order">
+                    <div className="header__option">
+                    
+                      <span className="header__optionLineOne">Kiểm tra</span>
+                      <span className="header__optionLineTwo">Đơn hàng</span>
+                      
+                    
+                    </div>
+                    </button>
+                  </Link>
 
                 <div className="header__option">
                 {
                   userInfo ? (
-                    // <div className ="dropdown">
-                    // <Link to="#">
-                    // <div className="header__option">
-                    // <span className="header__optionLineOne">Xin chào</span>
-                    // <span className="header__optionLineTwo">{userInfo.Fname} {userInfo.Lname}</span>     
-                    // </div>                 
-                    // </Link>
-                    // <ul className="dropdown-content">
-                    //   <Link to="/" onClick={signoutHandler}>
-                    //     <span className="dropdown-signout"> Đăng xuất </span>
-                    //     </Link>
-                    // </ul>
-                    // </div>
-
-                    <div>
+                  <div>
                     <Dropdown className="dropdown">
                       
                       <Dropdown.Toggle className="dropdown-basic" style={{backgroundColor: 'rgba(244,203,36,09)'}}>
@@ -87,15 +77,18 @@ function Header(props) {
                       </Dropdown.Menu>
                     </Dropdown>
                   </div>
+
+
                   ) : (
-               
-                  <Link to ="/signin">
+                    
+                  <button className="signin-button">
+                       <Link to ="/signin" style={{textDecoration: 'none'}}>
                     <div className="header__option">
                       <span className="header__optionLineOne">Xin chào</span>
                       <span className="header__optionLineTwo">Đăng nhập</span>     
                     </div>                 
                   </Link>
-                
+                  </button>
                   )
                 }
                 </div>
