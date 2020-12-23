@@ -15,7 +15,7 @@ import {
 import {listProductCategories, listProductBrands} from "../../actions/productActions";
 import Axios from 'axios';
 import '../../utils';
-import { sizeShoes } from '../../utils';
+import { sizeShoes, sizeShirt } from '../../utils';
 
 
 
@@ -165,7 +165,8 @@ export const AddProducts = (props) => {
   const listBrand = useSelector((state) => state.listBrand);
   const {loading: loadingBrand, error: errorBrand, brands} = listBrand;
   const productCreate = useSelector((state) => state.productCreate);
-  const sizeQuantity = sizeShoes;
+  const [sizeQuantity, setSizeQuantity] = useState(''); 
+  const [categoryName, setCategoryName] = useState('');
   const {
     loading: loadingCreate,
     error: errorCreate,
@@ -178,13 +179,17 @@ export const AddProducts = (props) => {
       dispatch({ type: PRODUCT_CREATE_RESET });
       props.history.push('/products/productsManage');
     }
+    if(category == 1 || category == 2) {
+      setSizeQuantity(sizeShoes)
+    }
+     else {
+      setSizeQuantity(sizeShirt)
+    }
     dispatch(listProductCategories());
     dispatch(listProductBrands())
   }, [dispatch, successCreate, props.history]);
   const submitHandler = (e) => {
-  
     e.preventDefault();
-    
     // TODO: dispatch update product
     dispatch(
       createProduct({
@@ -252,8 +257,10 @@ export const AddProducts = (props) => {
         <div>
               <label htmlFor="category">Danh mục</label>
               <select className="categories-list" 
-                      value={category}  
-                      onChange={(e) => setCategory(e.target.value)}
+                      value={category, categoryName}  
+                      onChange={(e) => (setCategory(e.target.value),
+                        setCategoryName(e.target.value)
+                        )}
               >
               <option value="" disabled hidden>Chọn</option>
               { categories ? (

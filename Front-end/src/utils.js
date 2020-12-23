@@ -92,3 +92,21 @@ export const sizeShoes = [
         productSize:"Size 10 US - Size 43.0VN - 28.0CM"
     },
 ]
+
+export const sizeShirt = [
+    {
+        idSize: 1,
+        quantityInStock: 1,
+        productSize: "S"
+    },
+    {
+        idSize: 2,
+        quantityInStock: 10,
+        productSize: "M",
+    },
+    {
+        idSize: 3,
+        quantityInStock: 10,
+        productSize: "L",
+    }
+]

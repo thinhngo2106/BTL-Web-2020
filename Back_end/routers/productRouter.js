@@ -60,15 +60,37 @@ router.post("/",
             idProduct: createdProduct.idProduct,
             image: req.body.image,
         })
-        const array = req.body.sizeQuantity;
-        array.forEach(async(element) => {
-            await db.productsizes.create({
-                idProduct: createdProduct.idProduct,
-                idSize: element.idSize,
-                quantityInStock: element.quantityInStock,
-                productSize: element.productSize,
+        const products = await db.products.findOne({
+            where: {
+                idProduct: createdProduct.idProduct
+            },
+            include:{
+                model: db.categories,
+            }
         })
-     })
+        if (products.category.categoryName.search("Giày") !== -1) {
+            const array = data.sizeShoes;
+            array.forEach(async(element) => {
+                await db.productsizes.create({
+                    idProduct: createdProduct.idProduct,
+                    idSize: element.idSize,
+                    quantityInStock: element.quantityInStock,
+                    productSize: element.productSize,
+            })
+         }) 
+        }
+        else {
+            const array = data.sizeShirt;
+            array.forEach(async(element) => {
+                await db.productsizes.create({
+                    idProduct: createdProduct.idProduct,
+                    idSize: element.idSize,
+                    quantityInStock: element.quantityInStock,
+                    productSize: element.productSize,
+            })
+         })
+        }
+        console.log(products.category.categoryName); 
         res.send({ message: 'Product Created', product: createdProduct });
     }
 ));
@@ -263,12 +285,16 @@ router.get("/test",
         const max = req.query.max;
         const maxPrice = parseInt(max);
         const priceFilter = min && max ? [min,max] : [1,50000000];
-        const product = await db.products.findAll({
+        const product = await db.products.findOne({
             where:{
-                productPrice: {[Op.between]: priceFilter}
+                idProduct: req.query.id
+            },
+            include: {
+                model: db.categories,
             }
         })
-        res.send({product});
+        const check = product.category.categoryName.search("Áo")
+        res.send({check});
     }));
    
 
