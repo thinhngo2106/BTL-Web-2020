@@ -16,6 +16,7 @@ import {
     categoryUpdateReducer,
     brandDetailsReducer,
     categoryDetailsReducer,
+    pltShowReducer,
 } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
 import {
@@ -39,6 +40,7 @@ import {
     orderDeleteReducer,
     orderUpdateReducer,
     orderDetailsReducer,
+    pltShowOrderReducer,
   } from './reducers/orderReducers';
 
 
@@ -94,6 +96,8 @@ const reducer = combineReducers({
     categoryDetails: categoryDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
     userDetails: userDetailsReducer,
+    pltShow: pltShowReducer,
+    pltOrder: pltShowOrderReducer,
 });
 
 

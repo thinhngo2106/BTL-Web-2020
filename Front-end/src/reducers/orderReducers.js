@@ -20,6 +20,9 @@ import {
   ORDER_DETAILS_FAIL,
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
+  PLT_ORDER_FAIL,
+  PLT_ORDER_REQUEST,
+  PLT_ORDER_SUCCESS,
 
   } from '../constants/orderConstants';
   
@@ -101,6 +104,19 @@ export const orderDetailsReducer = (state = { loading: true }, action) => {
     case ORDER_DETAILS_SUCCESS:
       return { loading: false, order: action.payload };
     case ORDER_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const pltShowOrderReducer = (state = { loading: true }, action) => {
+  switch (action.type) {
+    case PLT_ORDER_REQUEST:
+      return { loading: true };
+    case PLT_ORDER_SUCCESS:
+      return { loading: false, pltOrder: action.payload };
+    case PLT_ORDER_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

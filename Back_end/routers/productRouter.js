@@ -314,6 +314,22 @@ router.get("/importimage", expressAsyncHandler(async (req, res) => {
     res.send("Thành công"); 
  }));
 
+router.get("/plt",
+ isAuth,
+ isAdmin,
+ expressAsyncHandler(async (req, res) => {
+   const count = await db.products.findAll({
+     include:[{
+       model: db.categories,
+     }],
+     attributes: ['category.categoryName', [Sequelize.fn('COUNT', Sequelize.col('products.idProduct')), 'countProduct']],
+     group:["products.idCategory"], 
+
+   })
+   res.send(count);
+}
+));
+
 router.get('/', productController.products);
 router.get("/seed", productController.postProducts);    
 router.get('/:id',productController.productdetail);

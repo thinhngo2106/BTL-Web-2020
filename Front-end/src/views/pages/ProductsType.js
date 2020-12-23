@@ -48,8 +48,8 @@ export const ProductsTypeManage = (props) => {
                 <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Loại hàng</th>
-                  <th>Tùy chỉnh</th>
+                  <th>Danh mục</th>
+                  <th>Thao tác</th>
                 </tr>
               </thead>
               <tbody>
@@ -116,13 +116,13 @@ export const AddProductsType = (props) => {
   return (
     <div className='AddProductsType'>
        <form className="form a list" onSubmit={submitHandler}>  
-      <div><h1>Thêm loại sản phẩm</h1></div>
+      <div><h1>Thêm danh mục</h1></div>
       <div>
-            <label htmlFor="name">Tên loại sản phẩm</label>
+            <label htmlFor="name">Tên danh mục</label>
               <input
                 id="name"
                 type="text"
-                placeholder="Nhập tên loại sản phẩm"
+                placeholder="Nhập tên danh mục"
                 value={nameCategory}
                 onChange={(e) => setNameCategory(e.target.value)}
               ></input>
@@ -184,14 +184,14 @@ export const EditCategoryScreen = (props) => {
     <div>
         <form className="form a list" onSubmit={submitHandler}>
         <div>
-          <h1>Chỉnh sửa loại hàng{name}</h1>
+          <h1>Chỉnh sửa danh mục{name}</h1>
         </div>
         <div>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Tên danh mục</label>
               <input
                 id="name"
                 type="text"
-                placeholder="Enter name"
+                placeholder="Nhập tên danh mục"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></input>

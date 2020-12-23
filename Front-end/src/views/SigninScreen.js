@@ -5,7 +5,6 @@ import { signin } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import './css/signinScreen.css';
-import { USER_UPDATE_PROFILE_SUCCESS } from '../constants/userConstants';
  
 export default function SigninScreen(props) {
   const [email, setEmail] = useState('');
@@ -17,12 +16,6 @@ export default function SigninScreen(props) {
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo, loading, error } = userSignin;
-  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
-  const {
-    success: successUpdate,
-    error: errorUpdate,
-    loading: loadingUpdate,
-  } = userUpdateProfile;
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
@@ -30,15 +23,7 @@ export default function SigninScreen(props) {
   };
   useEffect(() => {
     if (userInfo) {
-      if (successUpdate) {
-        props.history.push("#");
-      }
-      else{
       props.history.push(redirect);
-      }
-    }
-    if (userInfo && userInfo.isAdmin){
-      props.history.push("/")
     }
   }, [props.history, redirect, userInfo]);
   return (

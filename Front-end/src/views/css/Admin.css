@@ -39,6 +39,14 @@
   width: 20%;
 }
 
+
 .addPro{
   line-height: 0.1;
+}
+.content{
+  display: flex;
+  flex-direction: row;
+}
+.chart{
+  margin-left: 20px;
 }

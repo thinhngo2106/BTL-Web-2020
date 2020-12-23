@@ -3,6 +3,8 @@ const db = require('../models');
 const orderRouter = express.Router();
 const expressAsyncHandler =  require('express-async-handler');
 const {isAuth, isAdmin} = require('../utlis');
+const router = require("./searchRouters");
+const sequelize = require('sequelize');
 
 orderRouter.post(  '/',
     isAuth,
@@ -75,14 +77,14 @@ orderRouter.get(
     const page = req.query.page >= 0 ? req.query.page : 0;
     const offset = page ? parseInt(page * limit) : 0;
     const orders = await db.orders.findAll({
-      offset: offset,
-      limit: limit,
       include:[{
           model: db.orderdetail
       },{
         model: db.users
-      }
+      },
       ],
+      offset: offset,
+      limit: limit,
     });
     const pages = await db.orders.count();
     const totalPages = Math.ceil(pages/ limit);
@@ -182,6 +184,16 @@ orderRouter.get(
       }
     }
 
+  })
+);
+
+orderRouter.get("/plt",
+  expressAsyncHandler(async (req, res) => {
+    const count = await db.orders.findAll({
+      attributes: ['orderDate', [sequelize.fn('COUNT', sequelize.col('orders.idOrder')), 'countOrder']],
+      group:["orders.orderDate"],
+    })
+    res.send(count);
   })
 );
 
