@@ -39,31 +39,31 @@ export default function OrderScreen(props) {
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div>
-      <h1>Order {order.idOrder}</h1>
+      <h1>Đơn hàng {order.idOrder}</h1>
       <div className="order-detail row top">
         <div className="col-md-6 ">
           {/* <ul>
             <li> */}
               <div className="card card-body">
-                <h2>Shipping</h2>
+                <h2>Địa chỉ giao hàng</h2>
                 <p>
-                  <strong>Name:</strong> {order.customerName} <br />
-                  <strong>Address: </strong> {order.address} <br />
-                  <strong>Date: </strong> {order.orderDate}
+                  <strong>Tên:</strong> {order.customerName} <br />
+                  <strong>Địa chỉ: </strong> {order.address} <br />
+                  <strong>Ngày đặt hàng: </strong> {order.orderDate}
                 </p>
               </div>
             {/* </li>
             <li> */}
               <div className="card card-body">
-                <h2>Payment</h2>
+                <h2>Thanh toán</h2>
                 <p>
-                  <strong>Method:</strong> {order.paymentMethod}
+                  <strong>Phương thức thanh toán:</strong> {order.paymentMethod}
                 </p>
               </div>
             {/* </li>
             <li> */}
               <div className="card card-body">
-                <h2>Order Items</h2>
+                <h2>Sản phẩm</h2>
                 {/* <ul> */}
                   {order.orderdetails.map((item) => (
                     // <li key={item.idProduct}>
@@ -103,25 +103,25 @@ export default function OrderScreen(props) {
             <div className="row">
             {/* <ul>
               <li> */}
-                <h2>Order Summary</h2>
+                <h2>Chi tiết đơn hàng</h2>
               {/* </li>
               <li> */}
               <div className="col-md-8">
                 <div className="row"> 
-                  <div><p>Items: {numberWithCommas(order)}₫ </p></div>
+                  <div><p>Tiền hàng: {numberWithCommas(order)}₫ </p></div>
                   
                 </div>
               {/* </li>
               <li> */}
                 <div className="row">
-                  <div><p>Shipping: {order.shippingPrice}₫ </p></div>
+                  <div><p>Tiền vận chuyển: {order.shippingPrice}₫ </p></div>
                   
                 </div>
               {/* </li>
               <li> */}
                 <div className="row">
                   <div>
-                    <strong> <p>Order Total: {sum(parseInt(priceOrder(order)), parseInt(order.shippingPrice))} ₫</p></strong>
+                    <strong> <p>Tổng tiền: {sum(parseInt(priceOrder(order)), parseInt(order.shippingPrice))} ₫</p></strong>
                   </div>
                 </div>
               {/* </li>
