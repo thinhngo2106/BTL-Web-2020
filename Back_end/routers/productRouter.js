@@ -2,11 +2,12 @@ const express = require("express");
 const db = require('../models');
 const router = express.Router();
 const expressAsyncHandler =  require('express-async-handler');
-const data = require("../dataimport");
+const data1 = require("../data1");
 const productController = require('../controllers/productController');
 const { isAdmin, isAuth} = require('../utlis');
 const { route } = require("./uploadRouter");
 const Sequelize = require('sequelize');
+const data = require("../data");
 const Op = Sequelize.Op;
 
 
@@ -271,6 +272,47 @@ router.get("/test",
     }));
    
 
+    router.get("/import",
+    expressAsyncHandler(async (req, res) => {
+        const array = data1.products;
+        const array1 = array.map((product) => ({
+            ...product
+        }))
+        await array.forEach(async(product) => {
+            await db.products.create({
+                idProduct: product.idProduct,
+                productName: product.productName,
+                productPrice: product.productPrice,
+                productDescription: product.productDescription,
+                idBrand: product.idBrand,
+                idCategory: product.idCategory,
+            })
+            if (product.idCategory == 1 || product.idCategory == 2) {
+            await  data.sizeShoes.forEach(async(size) => {
+                   await db.productsizes.create({
+                      idProduct:  product.idProduct,
+                      idSize: size.idSize,
+                      quantityInStock: size.quantityInStock,
+                      productSize: size.productSize,
+                   })
+               })
+            }
+            else {
+            await data.sizeShirt.forEach(async(size) => {
+                    await db.productsizes.create({
+                       idProduct:  product.idProduct,
+                       idSize: size.idSize,
+                       quantityInStock: size.quantityInStock,
+                       productSize: size.productSize,
+                    })
+                })
+            }
+        }
+        )
+        await db.productdetail.bulkCreate(data1.productdetail);
+        res.send("Thành công"); 
+    }
+));    
 
 
 router.get('/', productController.products);

@@ -65,5 +65,4 @@ module.exports.postProducts =  expressAsyncHandler(async (req, res) => {
     const createps = await db.productsizes.bulkCreate(data.productsizes);
     res.send({createc, createb, createp,createpd});
 
-    
 });
